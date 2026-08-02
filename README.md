@@ -27,6 +27,32 @@ sections/
 images/                 pictures referenced by any panel
 ```
 
+## What the site does
+
+The look is a dark "records console": a deep blue-black ground, a single amber
+signal colour, and monospace labels for anything that behaves like a field.
+It commits to dark deliberately, so there is no light palette to keep in sync.
+
+Beyond the structure above, a few behaviours are worth knowing about because
+they are where a change is most likely to surprise you.
+
+The console bar tracks your position. As you scroll, the tab for the section
+you are looking at highlights itself. That is the scroll spy at the bottom of
+`assets/app.js`, and it works off the `id` on each `<section>` in `index.html`
+matching the `href` on each tab.
+
+Timeline entries and project cards open on click. Each one is a button
+followed by a drawer, and the drawer animates open by growing a CSS grid row
+from `0fr` to `1fr`, which is the one reliable way to transition to a height
+you do not know in advance.
+
+The project tag filter builds itself. It reads every tag in
+`sections/projects/projects.json` and makes a button for each, so adding a tag
+to a project is all it takes to make that tag filterable.
+
+Panels fade up as you reach them, and all motion is switched off for anyone
+whose system asks for reduced motion.
+
 ## Everyday edits
 
 Changing content is the common case, and it only ever means editing one JSON

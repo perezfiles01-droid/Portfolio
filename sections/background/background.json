@@ -1,19 +1,28 @@
 {
+  "name": "Jimwyl Steve Perez",
+  "role": "Records and Information Management",
   "photo": "images/profile.jpg",
-  "photoAlt": "Portrait of Jim Perez",
-  "summary": "Records and information management specialist working on electronic document systems, reporting, and data quality. Replace this paragraph with your own summary.",
+  "photoAlt": "Portrait of Jimwyl Steve Perez",
+  "summary": "I work on electronic document and records systems: what is stored, who is using it, and what should have been disposed of years ago. Most of my work turns messy repositories into numbers people can act on.",
+  "meta": [
+    { "field": "status", "value": "active" },
+    { "field": "based", "value": "Manila, PH" },
+    { "field": "focus", "value": "EDRMS / reporting" }
+  ],
   "timeline": [
     {
       "role": "Records Management Analyst",
       "org": "Asian Development Bank",
-      "period": "2024 - present",
-      "detail": "Reporting and utilization analysis for the enterprise document and records management system."
+      "period": "2024 - now",
+      "detail": "Reporting and utilization analysis for the enterprise document and records management system, covering six dashboards from storage growth to retention compliance.",
+      "tags": ["Power BI", "Retention", "Utilization", "Governance"]
     },
     {
       "role": "Information Management Officer",
       "org": "Previous Employer",
       "period": "2021 - 2024",
-      "detail": "Retention scheduling, metadata standards, and departmental onboarding."
+      "detail": "Retention scheduling, metadata standards, and onboarding departments onto a shared classification scheme.",
+      "tags": ["Metadata", "Classification", "Training"]
     }
   ]
 }

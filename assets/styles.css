@@ -1,124 +1,165 @@
-/* Site-wide look: colors, fonts, spacing, header and footer.
-   Things shared by every panel live here. Anything used by only one panel
-   belongs in that panel's own .css file instead. */
+/* ============================================================
+   RECORDS CONSOLE
+   Site-wide look: palette, type, console bar, footer, and the
+   furniture every panel shares. Anything used by only one panel
+   belongs in that panel's own .css file instead.
 
-:root {
-  --bg: #ffffff;
-  --surface: #f6f7f9;
-  --text: #16191d;
-  --muted: #5b6572;
-  --accent: #1f6feb;
-  --border: #e2e5ea;
-  --radius: 10px;
-  --max-width: 900px;
+   This design commits to dark. That is a choice, not an
+   oversight, so there is no light palette to keep in sync.
+   ============================================================ */
+
+:root{
+  color-scheme: dark;
+
+  --ground:#080d11;   /* page background       */
+  --panel:#0d1721;    /* raised rows and cards */
+  --ink:#dbe4ea;      /* primary text          */
+  --ink-dim:#a9b8c1;  /* body copy             */
+  --muted:#72858f;    /* labels and metadata   */
+  --signal:#e8a33d;   /* the one accent        */
+  --line:#1b262f;     /* hairlines             */
+
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --max-width: 980px;
+  --bar-height: 3.35rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f1216;
-    --surface: #171b21;
-    --text: #e8eaed;
-    --muted: #9aa4b2;
-    --accent: #6ea8fe;
-    --border: #262c35;
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font:16px/1.6 var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    transition-duration:.01ms !important;
+    animation-duration:.01ms !important;
   }
 }
 
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+main{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 1.5rem 5rem;
 }
 
-main {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1.25rem 4rem;
+:focus-visible{
+  outline:2px solid var(--signal);
+  outline-offset:3px;
+  border-radius:2px;
 }
 
-/* Header */
+/* ---------- console bar ---------- */
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 1.25rem;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(8px);
+.console{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+  align-items:center;
+  justify-content:space-between;
+  padding:0.85rem 1.5rem;
+  border-bottom:1px solid var(--line);
+  background:rgba(8,13,17,.86);
+  backdrop-filter:blur(9px);
 }
 
-.brand {
-  font-weight: 650;
-  font-size: 1.05rem;
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: -0.01em;
+.sig{
+  font:600 0.8125rem/1 var(--mono);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+}
+.sig i{ color:var(--signal); font-style:normal; }
+
+.tabs{ display:flex; gap:0.25rem; }
+
+.tab{
+  padding:0.4rem 0.8rem;
+  border-radius:4px;
+  font:0.75rem/1 var(--mono);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-decoration:none;
+  transition:color .18s ease, background .18s ease;
+}
+.tab:hover{ color:var(--ink); background:#131e26; }
+
+/* set by the scroll spy in app.js */
+.tab[aria-current="true"]{
+  color:var(--ground);
+  background:var(--signal);
+  font-weight:700;
 }
 
-.site-nav {
-  display: flex;
-  gap: 1.25rem;
+/* ---------- shared panel furniture ---------- */
+
+main > section{
+  padding-top:4rem;
+  scroll-margin-top:calc(var(--bar-height) + 1rem);
 }
 
-.site-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.925rem;
+.panel-title{
+  margin:0;
+  font:600 0.75rem/1 var(--mono);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--signal);
 }
 
-.site-nav a:hover { color: var(--accent); }
-
-/* Shared panel furniture */
-
-main > section {
-  padding-top: 2.75rem;
-  scroll-margin-top: 4.5rem;
+.panel-intro{
+  margin:0.7rem 0 2rem;
+  color:var(--muted);
+  max-width:60ch;
 }
 
-.panel-title {
-  margin: 0 0 0.35rem;
-  font-size: 1.35rem;
-  letter-spacing: -0.015em;
+.load-error{
+  color:var(--muted);
+  font:0.875rem/1.6 var(--mono);
 }
 
-.panel-intro {
-  margin: 0 0 1.5rem;
-  color: var(--muted);
+/* Panels fade up as you reach them. The class is added by app.js only
+   when the browser supports it, so content is never hidden by a script
+   that failed to run. */
+.reveal{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.reveal.is-in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; }
 }
 
-.card {
-  padding: 1.1rem 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+/* ---------- footer ---------- */
+
+.site-footer{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:2rem 1.5rem 3.5rem;
+  border-top:1px solid var(--line);
 }
 
-a { color: var(--accent); }
-
-.load-error {
-  color: var(--muted);
-  font-style: italic;
+.foot-line{
+  margin:0 0 0.35rem;
+  font:0.75rem/1.7 var(--mono);
+  color:var(--muted);
 }
-
-/* Footer */
-
-.site-footer {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 2rem 1.25rem 3rem;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 0.875rem;
+.foot-line span{
+  display:inline-block;
+  min-width:4.25rem;
+  color:var(--signal);
 }
-
-.site-footer p { margin: 0; }

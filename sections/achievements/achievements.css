@@ -1,42 +1,72 @@
 /* Styling used only by the Achievements panel. */
 
-.ach-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.75rem;
+.ach-list{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
 }
 
-.ach-item {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
+.ach-item{
+  position:relative;
+  display:grid;
+  grid-template-columns:7.5rem 1fr;
+  gap:1rem;
+  align-items:baseline;
+  padding:1rem 0.9rem;
+  border-top:1px solid var(--line);
+  transition:background .18s ease;
+}
+.ach-item:last-child{ border-bottom:1px solid var(--line); }
+
+.ach-item::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:-1px;
+  bottom:-1px;
+  width:2px;
+  background:var(--signal);
+  transform:scaleY(0);
+  transform-origin:top;
+  transition:transform .22s ease;
+}
+.ach-item:hover{ background:var(--panel); }
+.ach-item:hover::before{ transform:scaleY(1); }
+
+.ach-year{
+  font:0.75rem/1.6 var(--mono);
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:0.03em;
+  transition:color .18s ease;
+}
+.ach-item:hover .ach-year{ color:var(--signal); }
+
+.ach-body{ display:block; }
+
+.ach-title{
+  display:block;
+  font-weight:600;
+  font-size:0.9688rem;
 }
 
-.ach-title {
-  margin: 0;
-  font-size: 1rem;
+.ach-issuer{
+  display:block;
+  margin-top:0.15rem;
+  font:0.75rem/1.5 var(--mono);
+  letter-spacing:0.04em;
+  color:var(--muted);
 }
 
-.ach-issuer {
-  margin: 0.15rem 0 0;
-  color: var(--accent);
-  font-size: 0.9375rem;
+.ach-note{
+  display:block;
+  margin-top:0.5rem;
+  max-width:58ch;
+  color:#93a4ae;
+  font-size:0.9375rem;
 }
 
-.ach-note {
-  margin: 0.4rem 0 0;
-  color: var(--muted);
-  font-size: 0.9375rem;
-  max-width: 55ch;
-}
-
-.ach-year {
-  color: var(--muted);
-  font-size: 0.8125rem;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  padding-top: 0.2rem;
+@media (max-width: 720px){
+  .ach-item{ grid-template-columns:1fr; gap:0.3rem; }
 }

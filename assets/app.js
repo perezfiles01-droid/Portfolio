@@ -1,8 +1,8 @@
-// The stitcher.
+// The stitcher, plus the two page-wide behaviours.
 //
 // A browser only ever opens one page: index.html. It does not go looking
-// through your folders. This file is what walks the list of sections below,
-// pulls each one's markup, styling and behaviour out of its own folder, and
+// through your folders. This file walks the list of sections below, pulls
+// each one's markup, styling and behaviour out of its own folder, and
 // assembles them into the single page the visitor sees.
 //
 // To add a new panel: create sections/<name>/ with <name>.html, <name>.css,
@@ -51,3 +51,56 @@ await Promise.all(
     })
   )
 );
+
+// ---------------------------------------------------------------
+// Scroll spy: the console bar highlights whichever section you are
+// looking at. Clicking a tab still just jumps to that anchor, so the
+// nav keeps working if this never runs.
+// ---------------------------------------------------------------
+
+const tabs = new Map(
+  [...document.querySelectorAll('.tab')].map((tab) => [tab.hash.slice(1), tab])
+);
+
+function markCurrent(id) {
+  tabs.forEach((tab, key) => {
+    if (key === id) tab.setAttribute('aria-current', 'true');
+    else tab.removeAttribute('aria-current');
+  });
+}
+
+const spy = new IntersectionObserver(
+  (entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+    if (visible) markCurrent(visible.target.id);
+  },
+  // the band sits just under the sticky bar, so a section counts as
+  // "current" once its top edge passes the bar
+  { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+);
+
+// ---------------------------------------------------------------
+// Reveal on scroll. The class is added here rather than in the HTML so
+// nothing is ever hidden by a script that failed to load.
+// ---------------------------------------------------------------
+
+const reveal = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-in');
+      observer.unobserve(entry.target);
+    });
+  },
+  { rootMargin: '0px 0px -12% 0px', threshold: 0.05 }
+);
+
+document.querySelectorAll('main > section').forEach((section) => {
+  spy.observe(section);
+  section.classList.add('reveal');
+  reveal.observe(section);
+});
+
+markCurrent(SECTIONS[0]);
