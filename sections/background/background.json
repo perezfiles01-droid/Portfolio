@@ -1,4 +1,6 @@
 {
+  "photo": "images/profile.jpg",
+  "photoAlt": "Portrait of Jim Perez",
   "summary": "Records and information management specialist working on electronic document systems, reporting, and data quality. Replace this paragraph with your own summary.",
   "timeline": [
     {

@@ -1,8 +1,29 @@
 /* Styling used only by the Background panel. */
 
+.bg-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin: 0 0 2rem;
+}
+
+.bg-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  display: block;
+}
+
 .bg-summary {
   max-width: 60ch;
-  margin: 0 0 2rem;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .bg-intro { flex-direction: column; gap: 1.1rem; }
 }
 
 .bg-timeline {
