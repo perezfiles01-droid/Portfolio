@@ -1,0 +1,42 @@
+/* Styling used only by the Achievements panel. */
+
+.ach-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ach-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ach-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ach-issuer {
+  margin: 0.15rem 0 0;
+  color: var(--accent);
+  font-size: 0.9375rem;
+}
+
+.ach-note {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  max-width: 55ch;
+}
+
+.ach-year {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-top: 0.2rem;
+}

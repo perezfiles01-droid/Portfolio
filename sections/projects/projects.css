@@ -1,0 +1,49 @@
+/* Styling used only by the Projects panel. */
+
+.proj-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.proj-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.proj-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.proj-title a { text-decoration: none; }
+.proj-title a:hover { text-decoration: underline; }
+
+.proj-year {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.proj-blurb {
+  margin: 0.5rem 0 0.9rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.proj-tag {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.75rem;
+}

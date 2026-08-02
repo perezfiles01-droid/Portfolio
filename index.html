@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jim Perez - Portfolio</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="#top">Jim Perez</a>
+    <nav class="site-nav">
+      <a href="#background">Background</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- Each empty slot below is filled at load time from its own folder
+         under sections/. To add a panel: create the folder, add a slot here,
+         and add its name to SECTIONS in assets/app.js. -->
+
+    <section id="background"   data-section="background"></section>
+    <section id="projects"     data-section="projects"></section>
+    <section id="achievements" data-section="achievements"></section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Built and maintained in a public GitHub repository.</p>
+  </footer>
+
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>

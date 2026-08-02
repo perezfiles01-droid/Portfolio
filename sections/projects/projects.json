@@ -1,0 +1,23 @@
+[
+  {
+    "title": "EDRMS Utilization Report",
+    "year": 2026,
+    "blurb": "A reporting suite specifying dashboards for records management, department performance, retention, and storage.",
+    "tags": ["Reporting", "Power BI", "Records"],
+    "link": ""
+  },
+  {
+    "title": "Records Migration Cleanup",
+    "year": 2025,
+    "blurb": "Bulk metadata correction across a legacy document library before migration.",
+    "tags": ["Data quality", "Metadata"],
+    "link": ""
+  },
+  {
+    "title": "Retention Schedule Review",
+    "year": 2024,
+    "blurb": "Reviewed and consolidated retention rules across departments into a single schedule.",
+    "tags": ["Governance"],
+    "link": ""
+  }
+]
