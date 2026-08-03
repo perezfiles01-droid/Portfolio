@@ -5,8 +5,8 @@
 // it keeps reading plain files, so if this admin ever breaks, the portfolio
 // carries on and the files can still be edited by hand.
 
-import { FILES } from './schema.js';
-import { token, whoAmI, putText, putBinary, repo } from './github.js';
+import { FILES } from './schema.js?v=2';
+import { token, whoAmI, putText, putBinary, repo } from './github.js?v=2';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 
@@ -112,7 +112,7 @@ function imageField(field, value, onChange) {
   preview.className = 'image-preview';
   const setPreview = (path) => {
     preview.innerHTML = path
-      ? `<img src="../${path}" alt="">`
+      ? `<img src="${path}" alt="">`
       : '<span>none</span>';
   };
   setPreview(value);
@@ -358,16 +358,27 @@ async function publish() {
 // ---------------------------------------------------------------- start
 
 async function loadAll() {
+  const failed = [];
   await Promise.all(
     FILES.map(async (file) => {
+      try {
       // Read straight from the site rather than through the API, so the forms
       // fill in before you sign in and a bad token cannot leave you staring
       // at an empty screen.
-      const response = await fetch(`../${file.path}?t=${Date.now()}`, { cache: 'no-store' });
+      // Relative to admin.html, which lives in the repo root beside sections/.
+      // Do not add "../" here: on GitHub Pages the site is served from a
+      // subfolder, and climbing out of it lands outside the site entirely.
+      const response = await fetch(`${file.path}?t=${Date.now()}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`${file.path} returned ${response.status}`);
       state.data[file.id] = await response.json();
+      } catch (error) {
+        console.error(error);
+        failed.push(file.label);
+      }
     })
   );
   render();
+  if (failed.length) say(`Could not load: ${failed.join(', ')}.`, true);
 }
 
 async function signIn(value) {
