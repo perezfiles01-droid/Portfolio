@@ -52,56 +52,87 @@
   padding:0 0.25rem;
 }
 
-/* ---------- the picture ---------- */
+/* ---------- the pictures ---------- */
 
 .jr-media{
-  position:relative;
   aspect-ratio:16/9;
+  display:flex;
+  gap:0.6rem;
+  overflow:hidden;
+}
+
+.jr-shot{
+  flex:1 1 0;
+  min-width:0;
+  position:relative;
   display:grid;
   place-items:center;
-  overflow:hidden;
+  padding:0;
+  border:1px solid var(--line);
   border-radius:10px;
+  background:rgba(10,17,24,.55);
+  overflow:hidden;
+  transition:flex-grow .5s cubic-bezier(.3,.7,.25,1),
+             border-color .3s ease,
+             box-shadow .3s ease;
 }
+.jr-solo{ cursor:default; }
+.jr-media-many .jr-shot{ cursor:pointer; }
 
-/* Feathered rather than framed, so the picture melts into the panel the way
-   the portrait does in the hero instead of sitting in a hard box. */
-.jr-photo{
+/* Fitted, never cropped: the whole picture always shows, at its own
+   proportions. What the interaction changes is how much width each one is
+   given, not what part of it you can see. */
+.jr-img{
+  display:block;
   width:100%;
   height:100%;
-  object-fit:cover;
-  -webkit-mask-image:radial-gradient(ellipse 78% 82% at 50% 50%, #000 55%, rgba(0,0,0,.5) 78%, transparent 97%);
-  mask-image:radial-gradient(ellipse 78% 82% at 50% 50%, #000 55%, rgba(0,0,0,.5) 78%, transparent 97%);
-  -webkit-mask-size:100% 100%;
-  mask-size:100% 100%;
-  -webkit-mask-repeat:no-repeat;
-  mask-repeat:no-repeat;
-  filter:saturate(.95) contrast(1.04);
-  transition:transform .6s ease;
+  object-fit:contain;
 }
-.jr-media:hover .jr-photo{ transform:scale(1.03); }
 
-/* Shown until a photo is added to journey.json. Deliberately looks like a
+/* The trade of space. Clicking sets the pressed state, which persists;
+   hovering only previews it, so the pressed picture returns when the pointer
+   leaves. These rules are in cascade order deliberately: hover has to be able
+   to beat the pressed state while the pointer is over the row. */
+.jr-media-many .jr-shot[aria-pressed="true"]{
+  flex-grow:2.4;
+  border-color:var(--signal);
+}
+.jr-media-many:hover .jr-shot{
+  flex-grow:0.75;
+  border-color:var(--line);
+}
+.jr-media-many .jr-shot:hover,
+.jr-media-many .jr-shot:focus-visible{
+  flex-grow:2.4;
+  border-color:var(--signal);
+  box-shadow:0 0 0 1px rgba(232,163,61,.25);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .jr-shot{ transition:none; }
+}
+
+/* Shown until a picture is added to journey.json. Deliberately looks like a
    held space rather than a broken image. */
 .jr-placeholder{
   display:grid;
   place-items:center;
   width:100%;
   height:100%;
-  border:1px dashed var(--line);
-  border-radius:10px;
   background:
     repeating-linear-gradient(
       135deg,
       rgba(255,255,255,.014) 0 12px,
       transparent 12px 24px
-    ),
-    rgba(13,23,33,.5);
+    );
 }
 .jr-placeholder span{
-  font:0.6875rem/1 var(--mono);
+  padding:0 0.5rem;
+  font:0.6875rem/1.4 var(--mono);
   letter-spacing:0.16em;
   text-transform:uppercase;
   color:var(--muted);
+  text-align:center;
 }
 
 /* ---------- caption ---------- */
@@ -117,6 +148,7 @@
 
 .jr-title{
   margin:0;
+  max-width:60ch;
   font-size:1.15rem;
   letter-spacing:-0.015em;
   text-wrap:balance;
@@ -155,4 +187,6 @@
   .jr-stage{ grid-template-columns:1fr; }
   .jr-arrow{ display:none; }
   .jr-media{ aspect-ratio:4/3; }
+  .jr-media-many{ aspect-ratio:auto; flex-direction:column; }
+  .jr-media-many .jr-shot{ aspect-ratio:4/3; flex:none; }
 }

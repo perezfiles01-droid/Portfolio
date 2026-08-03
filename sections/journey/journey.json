@@ -3,31 +3,51 @@
   "slides": [
     {
       "label": "Dec 2023",
-      "title": "Thesis: a pyrolysis reactor for oil-soaked cloth",
+      "title": "Design and Fabrication of a Pyrolysis Reactor for Efficient Energy Recovery from Cloth Contaminated with Used Engine Oil in Auto Repair and Maintenance Shops",
       "text": "Auto repair shops throw away rags soaked in used engine oil, which is both a disposal problem and wasted fuel. With Kaye Antonnet R. Adolfo and Rhel Dhenissie C. Barina, under Dr. Edwin A. Carcasona, I designed and fabricated a pyrolysis reactor that heats those rags without oxygen so the oil comes back off as recoverable energy instead of going to landfill. We presented it at the 12th International Mechanical Engineering Research Conference in January 2024.",
-      "image": "",
-      "imageAlt": "The pyrolysis reactor built for the thesis"
+      "images": [
+        {
+          "src": "",
+          "alt": "The pyrolysis reactor"
+        },
+        {
+          "src": "",
+          "alt": "The pyrolysis reactor, second view"
+        }
+      ]
     },
     {
       "label": "May 2024",
       "title": "Graduated Mechanical Engineering",
       "text": "Finished BS Mechanical Engineering at the University of San Carlos, Cebu, in May 2024, after four years and a Dean's List citation along the way.",
-      "image": "",
-      "imageAlt": "Graduation day"
+      "images": [
+        {
+          "src": "",
+          "alt": "Graduation day"
+        }
+      ]
     },
     {
       "label": "Feb 2025",
       "title": "Became a licensed Mechanical Engineer",
       "text": "Passed the Mechanical Engineering licensure examination, becoming a Registered Mechanical Engineer.",
-      "image": "",
-      "imageAlt": "Licensure"
+      "images": [
+        {
+          "src": "",
+          "alt": "Licensure"
+        }
+      ]
     },
     {
       "label": "May 2025",
       "title": "Joined AvePoint, and became a Business Analyst",
       "text": "Started at AvePoint Cebu as a Technical Intern in May 2025, working on Electronic Document and Records Management Systems, and was promoted to Junior Business Analyst that November.",
-      "image": "",
-      "imageAlt": "AvePoint"
+      "images": [
+        {
+          "src": "",
+          "alt": "AvePoint"
+        }
+      ]
     }
   ]
 }
