@@ -70,8 +70,7 @@
   flex:1 1 0;
   min-width:0;
   position:relative;
-  display:grid;
-  place-items:center;
+  display:block;
   padding:0;
   border:1px solid var(--line);
   border-radius:10px;
@@ -87,7 +86,13 @@
 /* Fitted, never cropped: the whole picture always shows, at its own
    proportions. What the interaction changes is how much width each one is
    given, not what part of it you can see. */
+/* Positioned rather than laid out in flow: a percentage height needs a
+   definite box to measure against, and centring the box made that height
+   resolve to the picture's own instead. The picture then overflowed and was
+   silently clipped, which is exactly what fitting is supposed to prevent. */
 .jr-img{
+  position:absolute;
+  inset:0;
   display:block;
   width:100%;
   height:100%;
@@ -120,10 +125,10 @@
 /* Shown until a picture is added to journey.json. Deliberately looks like a
    held space rather than a broken image. */
 .jr-placeholder{
+  position:absolute;
+  inset:0;
   display:grid;
   place-items:center;
-  width:100%;
-  height:100%;
   background:
     repeating-linear-gradient(
       135deg,
