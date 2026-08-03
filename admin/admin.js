@@ -5,8 +5,8 @@
 // it keeps reading plain files, so if this admin ever breaks, the portfolio
 // carries on and the files can still be edited by hand.
 
-import { FILES } from './schema.js?v=2';
-import { token, whoAmI, putText, putBinary, repo } from './github.js?v=2';
+import { FILES } from './schema.js?v=3';
+import { token, whoAmI, putText, putBinary, repo } from './github.js?v=3';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 
@@ -358,6 +358,12 @@ async function publish() {
 // ---------------------------------------------------------------- start
 
 async function loadAll() {
+  // Draw the shell first. The tabs and the sign in panel do not depend on any
+  // content, so they should never be held hostage by a file that fails to
+  // arrive. Before this, one bad fetch meant a completely blank page and
+  // nothing to tell you why.
+  render();
+
   const failed = [];
   await Promise.all(
     FILES.map(async (file) => {
@@ -424,5 +430,12 @@ window.addEventListener('beforeunload', (event) => {
 
 $('#view').href = `https://${repo.OWNER}.github.io/Portfolio/`;
 
-await loadAll();
+try {
+  await loadAll();
+} catch (error) {
+  console.error(error);
+  render();
+  say(`Could not load the content: ${error.message}`, true);
+}
+
 if (token.get()) signIn(token.get());
