@@ -1,19 +1,19 @@
 {
-  "intro": "Four moments that got me from a mechanical engineering degree to analysis work.",
+  "intro": "Four moments that got me from a mechanical engineering degree to analysis work, in the order they happened.",
   "slides": [
-    {
-      "label": "May 2024",
-      "title": "Graduated Mechanical Engineering",
-      "text": "Finished BS Mechanical Engineering at the University of San Carlos, Cebu, in May 2024, after four years and a Dean's List citation along the way.",
-      "image": "",
-      "imageAlt": "Graduation day"
-    },
     {
       "label": "Dec 2023",
       "title": "Thesis: a pyrolysis reactor for oil-soaked cloth",
       "text": "Auto repair shops throw away rags soaked in used engine oil, which is both a disposal problem and wasted fuel. With Kaye Antonnet R. Adolfo and Rhel Dhenissie C. Barina, under Dr. Edwin A. Carcasona, I designed and fabricated a pyrolysis reactor that heats those rags without oxygen so the oil comes back off as recoverable energy instead of going to landfill. We presented it at the 12th International Mechanical Engineering Research Conference in January 2024.",
       "image": "",
       "imageAlt": "The pyrolysis reactor built for the thesis"
+    },
+    {
+      "label": "May 2024",
+      "title": "Graduated Mechanical Engineering",
+      "text": "Finished BS Mechanical Engineering at the University of San Carlos, Cebu, in May 2024, after four years and a Dean's List citation along the way.",
+      "image": "",
+      "imageAlt": "Graduation day"
     },
     {
       "label": "Feb 2025",
