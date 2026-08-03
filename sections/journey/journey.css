@@ -200,3 +200,33 @@
   .jr-media-many{ aspect-ratio:auto; flex-direction:column; }
   .jr-media-many .jr-shot{ aspect-ratio:4/3; flex:none; }
 }
+
+/* ---------- a single picture ---------- */
+
+/* A lone picture gets a frame its own shape rather than a fixed landscape
+   one. Forcing a portrait photograph into a 16 by 9 box means either cropping
+   it or standing it between two wide bands of nothing; letting the frame take
+   the picture's proportions avoids both. */
+.jr-media:not(.jr-media-many){
+  aspect-ratio:auto;
+  justify-content:center;
+  /* without this the frame stretches to the height of the tallest slide in
+     the track and leaves a band under the picture */
+  align-items:flex-start;
+}
+.jr-media:not(.jr-media-many) .jr-shot{
+  flex:0 1 auto;
+  max-width:100%;
+}
+.jr-media:not(.jr-media-many) .jr-img{
+  position:static;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:27rem;
+}
+/* the held space still needs a shape of its own to hold */
+.jr-media:not(.jr-media-many) .jr-shot:has(.jr-placeholder){
+  flex:1 1 auto;
+  aspect-ratio:16/9;
+}

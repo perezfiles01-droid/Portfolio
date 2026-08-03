@@ -18,7 +18,7 @@ import { aurora, PAGE_FIELDS } from './aurora.js';
 // the same version makes that mismatch impossible. Modules cannot be fetched
 // with cache: 'no-cache' the way the data files are, so the version travels in
 // the URL instead.
-const VERSION = '2026-08-03b';
+const VERSION = '2026-08-03c';
 
 const SECTIONS = ['hero', 'journey', 'background', 'projects', 'skills', 'achievements', 'contact'];
 

@@ -21,8 +21,8 @@
       "text": "Finished BS Mechanical Engineering at the University of San Carlos, Cebu, in May 2024.",
       "images": [
         {
-          "src": "",
-          "alt": "Graduation day"
+          "src": "images/graduation.jpg",
+          "alt": "Graduation day, May 2024"
         }
       ]
     },
@@ -32,8 +32,8 @@
       "text": "Passed the Mechanical Engineering licensure examination, becoming a Registered Mechanical Engineer.",
       "images": [
         {
-          "src": "",
-          "alt": "Licensure"
+          "src": "images/licensure.jpg",
+          "alt": "Becoming a Registered Mechanical Engineer"
         }
       ]
     },
@@ -43,8 +43,8 @@
       "text": "Started at AvePoint Cebu as a Technical Intern in May 2025 and was promoted to Junior Business Analyst that November.",
       "images": [
         {
-          "src": "",
-          "alt": "AvePoint"
+          "src": "images/avepoint.jpg",
+          "alt": "At AvePoint Cebu"
         }
       ]
     }

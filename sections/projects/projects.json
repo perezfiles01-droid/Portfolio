@@ -1,30 +1,52 @@
-[
-  {
-    "title": "EDRMS Utilization Reporting",
-    "client": "Asian Development Bank",
-    "year": 2026,
-    "blurb": "Reporting on how an enterprise document and records management system is actually being used, across departments, storage, and retention.",
-    "detail": "EDRMS stands for Electronic Document and Records Management System: the platform an organisation keeps its official documents and records in. The client is the Asian Development Bank, an international development bank headquartered in Manila that lends across the Asia and Pacific region, so the repository spans many departments and a long retention history. The work covers what is stored, which departments are using the system, how storage is growing, and what has passed its retention date.",
-    "tags": [
-      "EDRMS",
-      "Reporting",
-      "Records management",
-      "ADB"
-    ],
-    "link": ""
-  },
-  {
-    "title": "Pyrolysis Reactor for Oil-Contaminated Cloth",
-    "client": "Undergraduate thesis, University of San Carlos",
-    "year": 2023,
-    "blurb": "Designed and fabricated a reactor that recovers energy from cloth contaminated with used engine oil, a waste stream auto repair shops currently send to landfill.",
-    "detail": "Full title: \"Design and Fabrication of a Pyrolysis Reactor for Efficient Energy Recovery from Cloth Contaminated with Used Engine Oil in Auto Repair and Maintenance Shops.\" Pyrolysis heats a material without oxygen, so instead of burning it breaks down into products that can be recovered. Applied to the oil-soaked rags that pile up in auto repair and maintenance shops, that turns a disposal cost into usable energy. The work covered the design, the fabrication, and testing the reactor's recovery efficiency. Done with Kaye Antonnet R. Adolfo and Rhel Dhenissie C. Barina, advised by Dr. Edwin A. Carcasona, PME, in the Department of Mechanical and Manufacturing Engineering. Presented at the 12th International Mechanical Engineering Research Conference, January 2024.",
-    "tags": [
-      "Mechanical design",
-      "Fabrication",
-      "Energy recovery",
-      "Research"
-    ],
-    "link": ""
-  }
-]
+{
+  "intro": "Client work as a business analyst, and the engineering project I built before it.",
+  "groups": [
+    {
+      "name": "Thesis",
+      "icon": "cap",
+      "items": [
+        {
+          "title": "Pyrolysis Reactor for Oil-Contaminated Cloth",
+          "client": "Undergraduate thesis, University of San Carlos",
+          "period": "2023",
+          "blurb": "Designed and fabricated a reactor that recovers energy from cloth contaminated with used engine oil, a waste stream auto repair shops currently send to landfill.",
+          "detail": "Full title: \"Design and Fabrication of a Pyrolysis Reactor for Efficient Energy Recovery from Cloth Contaminated with Used Engine Oil in Auto Repair and Maintenance Shops.\" Pyrolysis heats a material without oxygen, so instead of burning it breaks down into products that can be recovered. Applied to the oil-soaked rags that pile up in auto repair and maintenance shops, that turns a disposal cost into usable energy. The work covered the design, the fabrication, and testing the reactor's recovery efficiency. Done with Kaye Antonnet R. Adolfo and Rhel Dhenissie C. Barina, advised by Dr. Edwin A. Carcasona, PME, in the Department of Mechanical and Manufacturing Engineering. Presented at the 12th International Mechanical Engineering Research Conference, January 2024."
+        }
+      ]
+    },
+    {
+      "name": "AvePoint projects",
+      "icon": "briefcase",
+      "items": [
+        {
+          "title": "SUSSA Training Management System",
+          "client": "Singapore University of Social Sciences Academy",
+          "period": "Business Analyst",
+          "blurb": "A training management and administration platform tailored for SUSSA, built on an existing product and extended where the standard behaviour does not fit how they actually work.",
+          "detail": "The platform handles how an academy runs and administers its training. SUSSA's processes are not fully served by the product as it ships, so the work is establishing exactly where the standard behaviour falls short and specifying the custom features that close each gap."
+        },
+        {
+          "title": "NTUC LearningHub Training Management System",
+          "client": "NTUC LearningHub",
+          "period": "Business Analyst",
+          "blurb": "A central platform covering the whole life of a training course: creation, intakes, scheduling, learner registration, trainers, attendance, assessments, and reporting.",
+          "detail": "My job is to sit between the business users and the development team and make sure a requirement arrives as something buildable. That means writing and maintaining the tickets for new features, enhancements, change requests, and defect fixes, and making each one specific enough to leave no room for guesswork: the business rule, the expected behaviour, the dependencies, the edge cases, and what has to be true for it to count as done. Understanding how the system already behaves is half of it, because most requirements are really a change to something that exists."
+        },
+        {
+          "title": "GLASS",
+          "client": "Gaming Regulatory Authority",
+          "period": "Business Analyst",
+          "blurb": "A regulatory system for overseeing casino licensees, covering inspections, risk assessments, and compliance records, delivered in phased batches of change requests.",
+          "detail": "I am the link between what the regulator needs and what the developers build. Clarifying the requirement until it is unambiguous, documenting it, designing screen mockups so the intent is visible before anything is coded, confirming with the development team that it is feasible, and testing the result against the expectation before it is delivered."
+        },
+        {
+          "title": "EDRMS",
+          "client": "Asian Development Bank",
+          "period": "Business Analyst",
+          "blurb": "The platform ADB uses to store, organise, and manage its official documents and email records.",
+          "detail": "EDRMS stands for Electronic Document and Records Management System. I gather and document the business requirements, build functional prototypes so the client can see and agree a design before it is built, coordinate User Acceptance Testing ahead of deployment, carry stakeholder feedback back into the work, and prepare the client-facing deliverables. The aim throughout is that nobody discovers a misunderstanding at the point of release."
+        }
+      ]
+    }
+  ]
+}
