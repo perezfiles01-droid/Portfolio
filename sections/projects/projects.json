@@ -1,26 +1,11 @@
 [
   {
-    "title": "EDRMS Utilization Report",
+    "title": "EDRMS Utilization Reporting",
+    "client": "Asian Development Bank",
     "year": 2026,
-    "blurb": "A reporting suite specifying dashboards for records management, department performance, retention, and storage.",
-    "detail": "Six dashboards covering overview, records management, department performance, sites and libraries, format and storage, and retention. Every figure reconciles across the set, and every visual is restricted to what Power BI can reproduce natively.",
-    "tags": ["Reporting", "Power BI", "Records"],
-    "link": ""
-  },
-  {
-    "title": "Records Migration Cleanup",
-    "year": 2025,
-    "blurb": "Bulk metadata correction across a legacy document library before migration.",
-    "detail": "Profiled the source library, found the fields that were unreliable, and corrected them in bulk so the migration carried usable metadata rather than reproducing the mess.",
-    "tags": ["Data quality", "Metadata"],
-    "link": ""
-  },
-  {
-    "title": "Retention Schedule Review",
-    "year": 2024,
-    "blurb": "Reviewed and consolidated retention rules across departments into a single schedule.",
-    "detail": "Collected the rules each department was working to, resolved the conflicts between them, and consolidated everything into one schedule people could actually apply.",
-    "tags": ["Governance", "Retention"],
+    "blurb": "Reporting on how an enterprise document and records management system is actually being used, across departments, storage, and retention.",
+    "detail": "EDRMS stands for Electronic Document and Records Management System: the platform an organisation keeps its official documents and records in. The client is the Asian Development Bank, an international development bank headquartered in Manila that lends across the Asia and Pacific region, so the repository spans many departments and a long retention history. The work covers what is stored, which departments are using the system, how storage is growing, and what has passed its retention date.",
+    "tags": ["EDRMS", "Reporting", "Records management", "ADB"],
     "link": ""
   }
 ]

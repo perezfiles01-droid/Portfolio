@@ -1,13 +1,20 @@
 {
-  "name": "Jimwyl Steve D. Perez",
-  "role": "Registered Mechanical Engineer",
-  "summary": "I graduated in Mechanical Engineering from the University of San Carlos and passed the licensure examination in February 2025. My hands-on experience is in flour mill maintenance engineering, and my technical training covers mechanical drafting, mechatronics servicing, welding, and lubrication.",
+  "role": "Junior Business Analyst, and a licensed Mechanical Engineer",
+  "summary": "I work as a Junior Business Analyst at AvePoint Cebu, on electronic document and records management systems. I came to it from mechanical engineering: I graduated from the University of San Carlos in 2024 and passed the licensure examination in February 2025, with hands-on training in maintenance engineering, mechanical drafting, and mechatronics servicing. The engineering habit of taking a system apart to understand how it behaves is the part I use most in analysis work.",
   "meta": [
-    { "field": "status", "value": "open to work" },
+    { "field": "role", "value": "Junior BA" },
+    { "field": "at", "value": "AvePoint Cebu" },
     { "field": "based", "value": "Cebu City, PH" },
     { "field": "licence", "value": "ME, Feb 2025" }
   ],
   "timeline": [
+    {
+      "role": "Junior Business Analyst",
+      "org": "AvePoint, Cebu",
+      "period": "2025 - now",
+      "detail": "Working on electronic document and records management systems for enterprise clients, including the Asian Development Bank. Analysis, requirements, and reporting across the records lifecycle.",
+      "tags": ["EDRMS", "Requirements", "Reporting", "Records management"]
+    },
     {
       "role": "Maintenance Engineering Intern",
       "org": "General Milling Corporation, Lapu-Lapu City",

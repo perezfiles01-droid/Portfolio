@@ -35,6 +35,7 @@ export default async function init(root) {
             <span class="proj-title">${escape(project.title)}</span>
             <span class="proj-year">${escape(project.year)}</span>
           </button>
+          ${project.client ? `<p class="proj-client">${escape(project.client)}</p>` : ''}
           <p class="proj-blurb">${escape(project.blurb)}</p>
           ${detail}
           <ul class="proj-tags">${tags}</ul>

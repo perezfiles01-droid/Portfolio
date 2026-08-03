@@ -8,10 +8,9 @@
 // To add a new panel: create sections/<name>/ with <name>.html, <name>.css,
 // <name>.js and <name>.json, add a slot in index.html, and add the name here.
 
-// The projects panel is switched off until there is project work to show.
-// Its folder is still in sections/, so putting 'projects' back in this list
-// and adding a slot in index.html is all it takes to bring it back.
-const SECTIONS = ['hero', 'background', 'skills', 'achievements', 'contact'];
+import { aurora, PAGE_FIELDS } from './aurora.js';
+
+const SECTIONS = ['hero', 'background', 'projects', 'skills', 'achievements', 'contact'];
 
 async function loadSection(name) {
   const slot = document.querySelector(`[data-section="${name}"]`);
@@ -107,3 +106,7 @@ document.querySelectorAll('[data-section]').forEach((section) => {
   section.classList.add('reveal');
   reveal.observe(section);
 });
+
+// The ambient layer behind the content panels, dimmer and slower than the
+// hero's so it stays well under the reading matter.
+aurora(document.querySelector('[data-page-aurora]'), PAGE_FIELDS);

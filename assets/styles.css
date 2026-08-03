@@ -1,6 +1,6 @@
 /* ============================================================
    RECORDS CONSOLE
-   Site-wide look: palette, type, console bar, footer, and the
+   Site-wide look: palette, type, console bar, ambient layer, and the
    furniture every panel shares. Anything used by only one panel
    belongs in that panel's own .css file instead.
 
@@ -49,9 +49,10 @@ body{
 main{
   position:relative;
   z-index:2;
+  padding-bottom:6rem;
   max-width:var(--max-width);
   margin:0 auto;
-  padding:0 1.5rem 5rem;
+  padding:0 1.5rem;
 }
 
 :focus-visible{
@@ -60,12 +61,36 @@ main{
   border-radius:2px;
 }
 
+/* ---------- ambient layer ---------- */
+
+/* Fixed rather than absolute, so it drifts behind the content instead of
+   scrolling away with it. A scrim over the top keeps the colour well under
+   the text no matter where the fields happen to be. */
+.page-aurora{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(8,13,17,.18) 0%, rgba(8,13,17,.55) 100%);
+}
+
 /* ---------- console bar ---------- */
 
 .console{
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:30;
   display:flex;
   flex-wrap:wrap;
   gap:1rem;
@@ -109,8 +134,23 @@ main{
 
 /* ---------- shared panel furniture ---------- */
 
+/* Each panel is a pane of dark glass sitting over the ambient layer. The
+   blur and the near-opaque fill are what keep body text comfortable to read
+   while the colour still shows around and behind. */
 main > section{
-  padding-top:4.5rem;
+  margin-top:1.5rem;
+  padding:2.1rem 2rem 2.3rem;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(9,15,21,.72);
+  backdrop-filter:blur(16px) saturate(1.15);
+  -webkit-backdrop-filter:blur(16px) saturate(1.15);
+  box-shadow:0 24px 60px -40px #000;
+}
+main > section:first-child{ margin-top:2.5rem; }
+
+@supports not (backdrop-filter: blur(2px)){
+  main > section{ background:rgba(9,15,21,.94); }
 }
 
 [data-section]{
@@ -147,24 +187,4 @@ main > section{
 .reveal.is-in{ opacity:1; transform:none; }
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1; transform:none; }
-}
-
-/* ---------- footer ---------- */
-
-.site-footer{
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:2rem 1.5rem 3.5rem;
-  border-top:1px solid var(--line);
-}
-
-.foot-line{
-  margin:0 0 0.35rem;
-  font:0.75rem/1.7 var(--mono);
-  color:var(--muted);
-}
-.foot-line span{
-  display:inline-block;
-  min-width:4.25rem;
-  color:var(--signal);
 }

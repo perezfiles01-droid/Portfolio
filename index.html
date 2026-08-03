@@ -3,16 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jimwyl Steve D. Perez - Mechanical Engineer</title>
-  <meta name="description" content="Portfolio of Jimwyl Steve D. Perez, Registered Mechanical Engineer based in Cebu City, Philippines.">
+  <title>Jimwyl Steve D. Perez - Business Analyst</title>
+  <meta name="description" content="Portfolio of Jimwyl Steve D. Perez, Junior Business Analyst at AvePoint Cebu and a licensed Mechanical Engineer, based in Cebu City, Philippines.">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
+
+  <!-- The ambient layer behind the content panels. Fixed, so it drifts
+       independently of the scroll rather than travelling with it. -->
+  <canvas class="page-aurora" data-page-aurora aria-hidden="true"></canvas>
 
   <header class="console">
     <a class="sig" href="#hero">JSP<i>/</i>PORTFOLIO</a>
     <nav class="tabs" aria-label="Sections">
       <a class="tab" href="#background">Background</a>
+      <a class="tab" href="#projects">Projects</a>
       <a class="tab" href="#skills">Skills</a>
       <a class="tab" href="#achievements">Achievements</a>
       <a class="tab" href="#contact">Contact</a>
@@ -27,15 +32,11 @@
 
   <main>
     <section id="background"   data-section="background"></section>
+    <section id="projects"     data-section="projects"></section>
     <section id="skills"       data-section="skills"></section>
     <section id="achievements" data-section="achievements"></section>
     <section id="contact"      data-section="contact"></section>
   </main>
-
-  <footer class="site-footer">
-    <p class="foot-line"><span>source</span> github.com/perezfiles01-droid/portfolio</p>
-    <p class="foot-line"><span>built</span> plain HTML, CSS and JavaScript. No framework, no build step.</p>
-  </footer>
 
   <script type="module" src="assets/app.js"></script>
 </body>

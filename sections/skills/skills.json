@@ -1,17 +1,41 @@
 {
-  "intro": "What I bring to a maintenance or design team, grouped by the kind of work it supports.",
+  "intro": "Two sets of skills that turn out to reinforce each other: the analysis work I do now, and the engineering training underneath it.",
   "groups": [
     {
-      "name": "Software and drafting",
-      "items": ["AutoCAD", "SolidWorks", "Mechanical drafting", "Microsoft Office"]
+      "name": "Business analysis",
+      "items": [
+        "Requirements gathering",
+        "Process documentation",
+        "Stakeholder communication",
+        "Electronic document and records management",
+        "Records lifecycle and retention",
+        "Reporting and data analysis"
+      ]
     },
     {
-      "name": "Technical",
-      "items": ["Mechatronics servicing", "Shielded metal arc welding", "Machine lubrication", "Maintenance engineering"]
+      "name": "Engineering",
+      "items": [
+        "Maintenance engineering",
+        "Mechanical drafting",
+        "Mechatronics servicing",
+        "Shielded metal arc welding",
+        "Machine lubrication"
+      ]
+    },
+    {
+      "name": "Software",
+      "items": ["AutoCAD", "SolidWorks", "Microsoft Office"]
     },
     {
       "name": "Working style",
-      "items": ["Task management", "Time management", "Adaptability", "Team player", "Independent work", "Active listening"]
+      "items": [
+        "Task management",
+        "Time management",
+        "Adaptability",
+        "Team player",
+        "Independent work",
+        "Active listening"
+      ]
     }
   ]
 }
