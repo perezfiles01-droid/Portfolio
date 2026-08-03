@@ -10,7 +10,7 @@
 
 import { aurora, PAGE_FIELDS } from './aurora.js';
 
-const SECTIONS = ['hero', 'background', 'projects', 'skills', 'achievements', 'contact'];
+const SECTIONS = ['hero', 'journey', 'background', 'projects', 'skills', 'achievements', 'contact'];
 
 async function loadSection(name) {
   const slot = document.querySelector(`[data-section="${name}"]`);

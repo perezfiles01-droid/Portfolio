@@ -7,7 +7,7 @@
         "Requirements gathering",
         "Process documentation",
         "Stakeholder communication",
-        "Electronic document and records management",
+        "Electronic Document and Records Management Systems",
         "Records lifecycle and retention",
         "Reporting and data analysis"
       ]
@@ -24,7 +24,11 @@
     },
     {
       "name": "Software",
-      "items": ["AutoCAD", "SolidWorks", "Microsoft Office"]
+      "items": [
+        "AutoCAD",
+        "SolidWorks",
+        "Microsoft Office"
+      ]
     },
     {
       "name": "Working style",

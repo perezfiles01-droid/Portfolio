@@ -2,23 +2,9 @@
   "eyebrow": "Welcome to Jimwyl's portfolio",
   "display": "Business Analyst",
   "name": "Jimwyl Steve D. Perez",
-  "sub": "Junior Business Analyst at AvePoint Cebu, and a licensed Mechanical Engineer. I work on enterprise document and records management systems, most recently for the Asian Development Bank.",
+  "sub": "Junior Business Analyst at AvePoint Cebu, and a licensed Mechanical Engineer. I work on Electronic Document and Records Management Systems, most recently for the Asian Development Bank.",
   "photo": "images/profile.jpg",
   "photoAlt": "Portrait of Jimwyl Steve D. Perez",
-  "stats": [
-    {
-      "value": "AvePoint",
-      "label": "Current employer"
-    },
-    {
-      "value": "2025",
-      "label": "Licensed ME"
-    },
-    {
-      "value": "ADB",
-      "label": "Current client"
-    }
-  ],
   "cta": {
     "label": "Explore my background",
     "target": "background"

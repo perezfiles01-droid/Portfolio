@@ -1,0 +1,33 @@
+{
+  "intro": "Four moments that got me from a mechanical engineering degree to analysis work.",
+  "slides": [
+    {
+      "label": "May 2024",
+      "title": "Graduated Mechanical Engineering",
+      "text": "Finished BS Mechanical Engineering at the University of San Carlos, Cebu, in May 2024, after four years and a Dean's List citation along the way.",
+      "image": "",
+      "imageAlt": "Graduation day"
+    },
+    {
+      "label": "2023 - 2024",
+      "title": "Thesis project",
+      "text": "My undergraduate thesis, which I went on to present at the 12th International Mechanical Engineering Research Conference in January 2024. Replace this text with what the project actually investigated and what you found.",
+      "image": "",
+      "imageAlt": "Thesis project"
+    },
+    {
+      "label": "Feb 2025",
+      "title": "Became a licensed Mechanical Engineer",
+      "text": "Passed the Mechanical Engineering licensure examination, becoming a Registered Mechanical Engineer.",
+      "image": "",
+      "imageAlt": "Licensure"
+    },
+    {
+      "label": "2025",
+      "title": "Joined AvePoint as a Business Analyst",
+      "text": "Started as a Junior Business Analyst at AvePoint Cebu, working on Electronic Document and Records Management Systems for enterprise clients.",
+      "image": "",
+      "imageAlt": "AvePoint"
+    }
+  ]
+}
