@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Portfolio admin</title>
+  <link rel="stylesheet" href="admin/admin.css">
+</head>
+<body data-auth="no">
+
+  <header class="bar">
+    <span class="sig">JSP<i>/</i>ADMIN</span>
+    <div class="bar-right">
+      <span id="who" class="who"></span>
+      <a id="view" class="btn ghost small" target="_blank" rel="noopener">View site</a>
+      <button id="reload" type="button" class="btn ghost small">Reload</button>
+      <button id="signout" type="button" class="btn ghost small auth-only">Sign out</button>
+      <button id="save" type="button" class="btn small" disabled>Publish</button>
+    </div>
+  </header>
+
+  <div id="say" class="say" hidden></div>
+
+  <form id="signin" class="signin">
+    <h1>Sign in to publish</h1>
+    <p>
+      You can read and edit everything below without signing in. Publishing
+      needs a GitHub token so the changes can be written back to your
+      repository.
+    </p>
+    <div class="signin-row">
+      <input id="token" type="password" placeholder="GitHub personal access token"
+             autocomplete="off" spellcheck="false">
+      <button type="submit" class="btn">Sign in</button>
+    </div>
+    <p class="field-help">
+      Use a fine-grained token limited to the portfolio repository with
+      Contents set to Read and write. It is kept in this browser only, and
+      never leaves it except to talk to GitHub. Sign out to erase it.
+    </p>
+  </form>
+
+  <nav id="tabs" class="tabs"></nav>
+
+  <main id="form" class="form"></main>
+
+  <script type="module" src="admin/admin.js"></script>
+</body>
+</html>

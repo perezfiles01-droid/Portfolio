@@ -79,6 +79,56 @@ Say you want a Certifications panel.
 Nothing else changes. Reordering panels means reordering the slots in
 `index.html`. Deleting a panel means deleting its folder and its slot.
 
+## The admin
+
+`admin.html` is a private editor for everything on the site. It shows a form
+for each panel, and publishing writes the JSON files back to this repository
+through GitHub's API. GitHub Pages rebuilds, and the site updates a minute
+later. There is no server and nothing to pay for.
+
+    https://perezfiles01-droid.github.io/Portfolio/admin.html
+
+Reading and editing work without signing in. Publishing needs a token.
+
+### Making the token
+
+1. https://github.com/settings/personal-access-tokens/new
+2. Token name: anything. Expiration: 90 days is sensible.
+3. Repository access: **Only select repositories**, and pick `portfolio`.
+4. Permissions: **Repository permissions > Contents > Read and write**. Nothing else.
+5. Generate, copy it, paste it into the admin, and sign in.
+
+The token is kept in that browser's local storage and is sent nowhere except
+GitHub. Signing out erases it. It expires on its own, and a new one takes a
+minute to make.
+
+Treat it like a password. Anyone holding it can write to this repository,
+which is why it is scoped to this one repository and to file contents only.
+It cannot delete the repository, change settings, or touch anything else in
+the account.
+
+### What it can do
+
+Every field on the site, plus adding, removing and reordering any repeating
+item: carousel slides, timeline entries, projects, project groups, skills,
+achievements. Pictures can be uploaded straight from the form, which puts the
+file in `images/` and fills in the path.
+
+A dot appears on a tab with unsaved changes, and the Publish button counts
+them. Publishing writes one commit per changed file.
+
+### If two edits collide
+
+Publishing quotes the version of the file that was loaded. If the file
+changed on GitHub in between, the write is refused and the admin says so,
+rather than overwriting the other change. Reload and make the edit again.
+
+### The admin is not a lock
+
+The page is in a public repository, so anyone can open it. Without a token it
+can only read what the site already shows publicly. Nothing sensitive lives
+in it.
+
 ## Running it locally
 
 Opening `index.html` by double-clicking it will show blank panels. Browsers
