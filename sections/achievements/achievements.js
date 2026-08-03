@@ -7,7 +7,7 @@ const escape = (value) =>
 
 export default async function init(root) {
   const url = new URL('./achievements.json', import.meta.url);
-  const items = await fetch(url).then((r) => r.json());
+  const items = await fetch(url, { cache: 'no-cache' }).then((r) => r.json());
 
   // "sort" is a plain number so entries order correctly no matter how the
   // human-readable "year" is written ("Feb 2025", "2013 - 2018", and so on).

@@ -23,7 +23,7 @@ async function loadSection(name) {
 
   // 1. The markup. fetch asks the server for the file the same way the
   //    browser asked for index.html; .text() hands back its contents.
-  const response = await fetch(`${base}.html`);
+  const response = await fetch(`${base}.html`, { cache: 'no-cache' });
   if (!response.ok) throw new Error(`${base}.html returned ${response.status}`);
   slot.innerHTML = await response.text();
 

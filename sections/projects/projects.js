@@ -7,7 +7,7 @@ const escape = (value) =>
 
 export default async function init(root) {
   const url = new URL('./projects.json', import.meta.url);
-  const projects = await fetch(url).then((r) => r.json());
+  const projects = await fetch(url, { cache: 'no-cache' }).then((r) => r.json());
 
   // Newest first, so adding an entry anywhere in the file still sorts right.
   projects.sort((a, b) => b.year - a.year);

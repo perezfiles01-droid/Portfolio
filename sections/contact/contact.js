@@ -2,7 +2,7 @@
 
 export default async function init(root) {
   const url = new URL('./contact.json', import.meta.url);
-  const data = await fetch(url).then((r) => r.json());
+  const data = await fetch(url, { cache: 'no-cache' }).then((r) => r.json());
 
   root.querySelector('[data-intro]').textContent = data.intro;
   root.querySelector('[data-location]').textContent = data.location;

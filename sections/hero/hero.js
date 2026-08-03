@@ -13,7 +13,7 @@ const escape = (value) =>
 
 export default async function init(root) {
   const url = new URL('./hero.json', import.meta.url);
-  const data = await fetch(url).then((r) => r.json());
+  const data = await fetch(url, { cache: 'no-cache' }).then((r) => r.json());
 
   root.querySelector('[data-eyebrow]').textContent = data.eyebrow;
   root.querySelector('[data-display]').textContent = data.display;
