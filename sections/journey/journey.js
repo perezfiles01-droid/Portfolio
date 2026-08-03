@@ -37,8 +37,6 @@ export default async function init(root) {
   const url = new URL('./journey.json', import.meta.url);
   const data = await fetch(url, { cache: 'no-cache' }).then((r) => r.json());
 
-  root.querySelector('[data-intro]').textContent = data.intro;
-
   const track = root.querySelector('[data-track]');
   const dots = root.querySelector('[data-dots]');
   const slides = data.slides;

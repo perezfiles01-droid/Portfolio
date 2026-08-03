@@ -1,11 +1,16 @@
 /* Styling used only by the "Get to know me" panel. */
 
 .jr-stage{
+  margin-top:1.75rem;
   display:grid;
   grid-template-columns:auto 1fr auto;
   gap:0.75rem;
   align-items:center;
 }
+
+/* The caption runs the full width of the panel rather than stopping at the
+   picture, so no column of empty space is left down the right hand side. */
+.jr-slide{ padding:0; }
 
 /* ---------- arrows ---------- */
 
@@ -148,15 +153,15 @@
 
 .jr-title{
   margin:0;
-  max-width:60ch;
   font-size:1.15rem;
   letter-spacing:-0.015em;
-  text-wrap:balance;
+  /* pretty, not balance: balance evens the line lengths, which on a long
+     title leaves a gap down the right. */
+  text-wrap:pretty;
 }
 
 .jr-text{
   margin:0;
-  max-width:62ch;
   color:var(--ink-dim);
   font-size:0.9375rem;
 }
