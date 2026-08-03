@@ -5,7 +5,26 @@
     "year": 2026,
     "blurb": "Reporting on how an enterprise document and records management system is actually being used, across departments, storage, and retention.",
     "detail": "EDRMS stands for Electronic Document and Records Management System: the platform an organisation keeps its official documents and records in. The client is the Asian Development Bank, an international development bank headquartered in Manila that lends across the Asia and Pacific region, so the repository spans many departments and a long retention history. The work covers what is stored, which departments are using the system, how storage is growing, and what has passed its retention date.",
-    "tags": ["EDRMS", "Reporting", "Records management", "ADB"],
+    "tags": [
+      "EDRMS",
+      "Reporting",
+      "Records management",
+      "ADB"
+    ],
+    "link": ""
+  },
+  {
+    "title": "Pyrolysis Reactor for Oil-Contaminated Cloth",
+    "client": "Undergraduate thesis, University of San Carlos",
+    "year": 2023,
+    "blurb": "Designed and fabricated a reactor that recovers energy from cloth contaminated with used engine oil, a waste stream auto repair shops currently send to landfill.",
+    "detail": "Pyrolysis heats a material without oxygen, so instead of burning it breaks down into products that can be recovered. Applied to the oil-soaked rags that pile up in auto repair and maintenance shops, that turns a disposal cost into usable energy. The work covered the design, the fabrication, and testing the reactor's recovery efficiency. Done with Kaye Antonnet R. Adolfo and Rhel Dhenissie C. Barina, advised by Dr. Edwin A. Carcasona, PME, in the Department of Mechanical and Manufacturing Engineering. Presented at the 12th International Mechanical Engineering Research Conference, January 2024.",
+    "tags": [
+      "Mechanical design",
+      "Fabrication",
+      "Energy recovery",
+      "Research"
+    ],
     "link": ""
   }
 ]
