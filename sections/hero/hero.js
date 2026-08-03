@@ -4,7 +4,8 @@
 // The aurora itself lives in assets/aurora.js because the page behind the
 // content panels uses the same code with a dimmer preset.
 
-import { aurora, HERO_FIELDS } from '../../assets/aurora.js';
+import { aurora, heroFields } from '../../assets/aurora.js';
+import { getActive } from '../../assets/themes.js';
 
 const escape = (value) =>
   String(value).replace(/[&<>"]/g, (c) =>
@@ -55,5 +56,5 @@ export default async function init(root) {
     });
   });
 
-  aurora(root.querySelector('[data-aurora]'), HERO_FIELDS);
+  aurora(root.querySelector('[data-aurora]'), heroFields(getActive().auroraHero));
 }

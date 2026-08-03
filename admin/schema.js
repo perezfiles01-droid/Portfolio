@@ -20,6 +20,16 @@ const ICON_NAMES = [
 
 export const FILES = [
   {
+    id: 'theme',
+    label: 'Appearance',
+    path: 'theme.json',
+    help: 'The colour scheme for the whole site. Pick one and publish.',
+    fields: [
+      { key: 'id', label: 'Colour scheme', type: 'theme' },
+    ],
+  },
+
+  {
     id: 'hero',
     label: 'Home',
     path: 'sections/hero/hero.json',

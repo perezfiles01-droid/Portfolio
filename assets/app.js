@@ -8,7 +8,8 @@
 // To add a new panel: create sections/<name>/ with <name>.html, <name>.css,
 // <name>.js and <name>.json, add a slot in index.html, and add the name here.
 
-import { aurora, PAGE_FIELDS } from './aurora.js';
+import { aurora, pageFields } from './aurora.js';
+import { loadTheme, getActive } from './themes.js';
 
 // Bump this whenever a section's html, css or js changes.
 //
@@ -18,7 +19,11 @@ import { aurora, PAGE_FIELDS } from './aurora.js';
 // the same version makes that mismatch impossible. Modules cannot be fetched
 // with cache: 'no-cache' the way the data files are, so the version travels in
 // the URL instead.
-const VERSION = '2026-08-03c';
+const VERSION = '2026-08-03d';
+
+// The colour scheme is applied before any panel draws, so nothing is ever
+// painted in the default scheme and then repainted.
+await loadTheme();
 
 const SECTIONS = ['hero', 'journey', 'background', 'projects', 'skills', 'achievements', 'contact'];
 
@@ -120,4 +125,4 @@ document.querySelectorAll('[data-section]').forEach((section) => {
 
 // The ambient layer behind the content panels, dimmer and slower than the
 // hero's so it stays well under the reading matter.
-aurora(document.querySelector('[data-page-aurora]'), PAGE_FIELDS);
+aurora(document.querySelector('[data-page-aurora]'), pageFields(getActive().auroraPage));

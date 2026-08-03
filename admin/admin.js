@@ -7,14 +7,18 @@
 
 import { FILES } from './schema.js?v=3';
 import { token, whoAmI, putText, putBinary, repo } from './github.js?v=3';
+import { THEMES } from '../assets/themes.js?v=1';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 
 const state = {
-  data: {},      // id -> parsed json
+  data: {},        // id -> parsed json, edited in place
+  original: {},    // id -> the same json as it was loaded, for Review
   dirty: new Set(),
   current: FILES[0].id,
 };
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
 
 // ---------------------------------------------------------------- helpers
 
@@ -83,6 +87,8 @@ function fieldRow(field, value, onChange) {
     );
   } else if (field.type === 'image') {
     return imageField(field, value, onChange);
+  } else if (field.type === 'theme') {
+    return themeField(field, value, onChange);
   } else {
     input = document.createElement('input');
     input.type = 'text';
@@ -97,6 +103,51 @@ function fieldRow(field, value, onChange) {
     help.textContent = field.help;
     wrap.append(help);
   }
+  return wrap;
+}
+
+// Swatches rather than a dropdown: a colour scheme is a thing you recognise
+// by looking at it, not by reading its name.
+function themeField(field, value, onChange) {
+  const wrap = document.createElement('div');
+  wrap.className = 'field';
+  wrap.innerHTML = `<span class="field-label">${field.label}</span>`;
+
+  const grid = document.createElement('div');
+  grid.className = 'themes';
+
+  for (const theme of THEMES) {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'theme-card';
+    card.setAttribute('aria-pressed', String(theme.id === value));
+    card.style.setProperty('--t-ground', theme.tokens.ground);
+    card.style.setProperty('--t-panel', theme.tokens.panel);
+    card.style.setProperty('--t-ink', theme.tokens.ink);
+    card.style.setProperty('--t-muted', theme.tokens.muted);
+    card.style.setProperty('--t-signal', theme.tokens.signal);
+    card.style.setProperty('--t-line', theme.tokens.line);
+
+    card.innerHTML = `
+      <span class="theme-swatch">
+        <span class="theme-bar"></span>
+        <span class="theme-dot"></span>
+        <span class="theme-line"></span>
+        <span class="theme-line short"></span>
+      </span>
+      <span class="theme-name">${theme.name}</span>
+      <span class="theme-note">${theme.note}</span>`;
+
+    card.addEventListener('click', () => {
+      onChange(theme.id);
+      grid.querySelectorAll('.theme-card').forEach((c) => c.setAttribute('aria-pressed', 'false'));
+      card.setAttribute('aria-pressed', 'true');
+    });
+
+    grid.append(card);
+  }
+
+  wrap.append(grid);
   return wrap;
 }
 
@@ -161,8 +212,18 @@ function imageField(field, value, onChange) {
     }
   });
 
+  const fallback = document.createElement('p');
+  fallback.className = 'field-help';
+  fallback.innerHTML =
+    'Upload puts the file in <code>images/</code> and fills the box in. ' +
+    'If it ever fails, upload at ' +
+    `<a href="https://github.com/${repo.OWNER}/${repo.REPO}/upload/${repo.BRANCH}/images" ` +
+    'target="_blank" rel="noopener">github.com &rsaquo; images</a> ' +
+    'and type the path here as <code>images/yourfile.jpg</code>. ' +
+    'Lower case, no spaces.';
+
   row.append(input, button, pick);
-  wrap.append(row, preview);
+  wrap.append(row, preview, fallback);
   if (field.help) {
     const help = document.createElement('span');
     help.className = 'field-help';
@@ -278,8 +339,9 @@ function updateDirtyMarks() {
     tab.classList.toggle('dirty', state.dirty.has(tab.dataset.tabId));
   });
   const count = state.dirty.size;
-  $('#save').textContent = count ? `Publish ${count} change${count > 1 ? 's' : ''}` : 'Publish';
+  $('#save').textContent = count ? `Publish ${count} file${count > 1 ? 's' : ''}` : 'Publish';
   $('#save').disabled = count === 0 || !token.get();
+  $('#review-open').disabled = count === 0;
 }
 
 function render() {
@@ -321,6 +383,97 @@ function render() {
   updateDirtyMarks();
 }
 
+// ---------------------------------------------------------------- review
+
+// Walks the loaded copy and the edited copy side by side and reports what
+// actually differs. Publishing without seeing this is publishing blind, and
+// the whole point of an admin is that you can check before the world does.
+function diff(before, after, path = []) {
+  const out = [];
+  const label = path.join(' > ');
+
+  const isObject = (v) => v && typeof v === 'object';
+
+  if (Array.isArray(before) || Array.isArray(after)) {
+    const a = before || [];
+    const b = after || [];
+    const longest = Math.max(a.length, b.length);
+    for (let i = 0; i < longest; i += 1) {
+      if (i >= a.length) out.push({ label: `${label} > ${i + 1}`, kind: 'added', after: summarise(b[i]) });
+      else if (i >= b.length) out.push({ label: `${label} > ${i + 1}`, kind: 'removed', before: summarise(a[i]) });
+      else out.push(...diff(a[i], b[i], [...path, String(i + 1)]));
+    }
+    return out;
+  }
+
+  if (isObject(before) || isObject(after)) {
+    const keys = new Set([...Object.keys(before || {}), ...Object.keys(after || {})]);
+    for (const key of keys) out.push(...diff((before || {})[key], (after || {})[key], [...path, key]));
+    return out;
+  }
+
+  if (String(before ?? '') !== String(after ?? '')) {
+    out.push({ label, kind: 'changed', before: String(before ?? ''), after: String(after ?? '') });
+  }
+  return out;
+}
+
+function summarise(value) {
+  if (value == null) return '';
+  if (typeof value !== 'object') return String(value);
+  const first = Object.values(value).find((v) => typeof v === 'string' && v.trim());
+  return first || JSON.stringify(value).slice(0, 80);
+}
+
+function openReview() {
+  const box = $('#review');
+  const body = $('#review-body');
+  body.innerHTML = '';
+
+  const ids = [...state.dirty];
+  if (!ids.length) {
+    body.innerHTML = '<p class="field-help">Nothing has changed yet.</p>';
+  }
+
+  for (const id of ids) {
+    const file = FILES.find((f) => f.id === id);
+    const changes = diff(state.original[id], state.data[id]);
+
+    const group = document.createElement('section');
+    group.className = 'review-group';
+    group.innerHTML = `<h3>${file.label}</h3>`;
+
+    if (!changes.length) {
+      group.insertAdjacentHTML('beforeend',
+        '<p class="field-help">Edited, but the result is the same as before.</p>');
+    }
+
+    for (const change of changes) {
+      const row = document.createElement('div');
+      row.className = `review-row ${change.kind}`;
+      row.innerHTML = `<p class="review-where">${change.label}</p>`;
+
+      if (change.kind === 'changed') {
+        row.insertAdjacentHTML('beforeend',
+          `<p class="review-before">${escapeHtml(change.before) || '<i>empty</i>'}</p>` +
+          `<p class="review-after">${escapeHtml(change.after) || '<i>empty</i>'}</p>`);
+      } else if (change.kind === 'added') {
+        row.insertAdjacentHTML('beforeend', `<p class="review-after">added: ${escapeHtml(change.after)}</p>`);
+      } else {
+        row.insertAdjacentHTML('beforeend', `<p class="review-before">removed: ${escapeHtml(change.before)}</p>`);
+      }
+      group.append(row);
+    }
+    body.append(group);
+  }
+
+  $('#review-publish').disabled = !ids.length || !token.get();
+  box.showModal();
+}
+
+const escapeHtml = (value) =>
+  String(value).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
+
 // ---------------------------------------------------------------- saving
 
 function say(message, bad = false) {
@@ -345,6 +498,7 @@ async function publish() {
       const file = FILES.find((f) => f.id === id);
       const text = JSON.stringify(state.data[id], null, 2) + '\n';
       await putText(file.path, text, `Update ${file.label} from the admin`);
+      state.original[id] = clone(state.data[id]);
       state.dirty.delete(id);
     }
     say('Published. The site updates in about a minute.');
@@ -377,6 +531,7 @@ async function loadAll() {
       const response = await fetch(`${file.path}?t=${Date.now()}`, { cache: 'no-store' });
       if (!response.ok) throw new Error(`${file.path} returned ${response.status}`);
       state.data[file.id] = await response.json();
+      state.original[file.id] = clone(state.data[file.id]);
       } catch (error) {
         console.error(error);
         failed.push(file.label);
@@ -416,6 +571,13 @@ $('#signout').addEventListener('click', () => {
 });
 
 $('#save').addEventListener('click', publish);
+$('#review').addEventListener('close', () => { /* nothing to undo */ });
+$('#review-open').addEventListener('click', openReview);
+$('#review-close').addEventListener('click', () => $('#review').close());
+$('#review-publish').addEventListener('click', async () => {
+  $('#review').close();
+  await publish();
+});
 
 $('#reload').addEventListener('click', async () => {
   if (state.dirty.size && !confirm('Discard unsaved changes and reload?')) return;

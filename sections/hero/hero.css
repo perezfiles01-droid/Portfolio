@@ -30,7 +30,7 @@
   z-index:1;
   pointer-events:none;
   background:
-    radial-gradient(130% 95% at 50% 45%, transparent 0%, rgba(8,13,17,.28) 62%, rgba(8,13,17,.86) 100%);
+    radial-gradient(130% 95% at 50% 45%, transparent 0%, color-mix(in srgb, var(--ground) 28%, transparent) 62%, color-mix(in srgb, var(--ground) 88%, transparent) 100%);
 }
 
 .hero-inner{

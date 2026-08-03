@@ -82,7 +82,7 @@ body::before{
   z-index:1;
   pointer-events:none;
   background:
-    radial-gradient(120% 80% at 50% 0%, rgba(8,13,17,.18) 0%, rgba(8,13,17,.55) 100%);
+    radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--ground) 18%, transparent) 0%, color-mix(in srgb, var(--ground) 55%, transparent) 100%);
 }
 
 /* ---------- console bar ---------- */
@@ -98,7 +98,7 @@ body::before{
   justify-content:space-between;
   padding:0.85rem 1.5rem;
   border-bottom:1px solid var(--line);
-  background:rgba(8,13,17,.86);
+  background:color-mix(in srgb, var(--ground) 88%, transparent);
   backdrop-filter:blur(9px);
 }
 
@@ -123,7 +123,7 @@ body::before{
   text-decoration:none;
   transition:color .18s ease, background .18s ease;
 }
-.tab:hover{ color:var(--ink); background:#131e26; }
+.tab:hover{ color:var(--ink); background:color-mix(in srgb, var(--panel) 85%, var(--signal)); }
 
 /* set by the scroll spy in app.js */
 .tab[aria-current="true"]{
@@ -142,7 +142,7 @@ main > section{
   padding:2.1rem 2rem 2.3rem;
   border:1px solid var(--line);
   border-radius:14px;
-  background:rgba(9,15,21,.72);
+  background:color-mix(in srgb, var(--ground) 74%, var(--panel));
   backdrop-filter:blur(16px) saturate(1.15);
   -webkit-backdrop-filter:blur(16px) saturate(1.15);
   box-shadow:0 24px 60px -40px #000;
@@ -150,7 +150,7 @@ main > section{
 main > section:first-child{ margin-top:2.5rem; }
 
 @supports not (backdrop-filter: blur(2px)){
-  main > section{ background:rgba(9,15,21,.94); }
+  main > section{ background:color-mix(in srgb, var(--ground) 92%, var(--panel)); }
 }
 
 [data-section]{

@@ -22,7 +22,7 @@
   padding:0;
   border:1px solid var(--line);
   border-radius:50%;
-  background:rgba(13,23,33,.65);
+  background:color-mix(in srgb, var(--panel) 78%, transparent);
   color:var(--muted);
   font-size:1.5rem;
   line-height:1;
@@ -32,7 +32,7 @@
 .jr-arrow:hover{
   color:var(--signal);
   border-color:var(--signal);
-  background:rgba(13,23,33,.9);
+  background:color-mix(in srgb, var(--panel) 96%, transparent);
 }
 .jr-prev:hover{ transform:translateX(-3px); }
 .jr-next:hover{ transform:translateX(3px); }
@@ -74,7 +74,7 @@
   padding:0;
   border:1px solid var(--line);
   border-radius:10px;
-  background:rgba(10,17,24,.55);
+  background:color-mix(in srgb, var(--panel) 60%, transparent);
   overflow:hidden;
   transition:flex-grow .5s cubic-bezier(.3,.7,.25,1),
              border-color .3s ease,
@@ -115,7 +115,7 @@
 .jr-media-many .jr-shot:focus-visible{
   flex-grow:2.4;
   border-color:var(--signal);
-  box-shadow:0 0 0 1px rgba(232,163,61,.25);
+  box-shadow:0 0 0 1px color-mix(in srgb, var(--signal) 28%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce){

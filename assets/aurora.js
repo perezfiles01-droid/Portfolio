@@ -8,21 +8,29 @@
 // are composited with "lighter" so where they overlap they add, the way real
 // light does, rather than one covering another.
 
-export const HERO_FIELDS = [
-  { hue: ' 56,132,148', x: 0.22, y: 0.30, r: 0.70, ax: 0.055, ay: 0.045, sx: 0.00013, sy: 0.00017, a: 0.52 },
-  { hue: ' 46, 78,150', x: 0.72, y: 0.24, r: 0.62, ax: 0.070, ay: 0.038, sx: 0.00009, sy: 0.00021, a: 0.46 },
-  { hue: '232,163, 61', x: 0.52, y: 0.78, r: 0.52, ax: 0.060, ay: 0.050, sx: 0.00016, sy: 0.00011, a: 0.34 },
-  { hue: ' 30,120,120', x: 0.88, y: 0.72, r: 0.46, ax: 0.045, ay: 0.055, sx: 0.00019, sy: 0.00008, a: 0.28 },
+// How the fields move. Colour comes from the theme, so the same drift can be
+// worn in any scheme without duplicating the geometry.
+const HERO_GEOM = [
+  { x: 0.22, y: 0.30, r: 0.70, ax: 0.055, ay: 0.045, sx: 0.00013, sy: 0.00017, a: 0.52 },
+  { x: 0.72, y: 0.24, r: 0.62, ax: 0.070, ay: 0.038, sx: 0.00009, sy: 0.00021, a: 0.46 },
+  { x: 0.52, y: 0.78, r: 0.52, ax: 0.060, ay: 0.050, sx: 0.00016, sy: 0.00011, a: 0.34 },
+  { x: 0.88, y: 0.72, r: 0.46, ax: 0.045, ay: 0.055, sx: 0.00019, sy: 0.00008, a: 0.28 },
 ];
 
-// Dimmer, larger and slower. This one sits behind reading matter, so it has
+// Larger, slower and dimmer. This one sits behind reading matter, so it has
 // to stay well under the text rather than compete with it.
-export const PAGE_FIELDS = [
-  { hue: ' 46, 78,150', x: 0.18, y: 0.18, r: 0.95, ax: 0.075, ay: 0.060, sx: 0.000052, sy: 0.000071, a: 0.46 },
-  { hue: ' 56,132,148', x: 0.82, y: 0.42, r: 0.85, ax: 0.085, ay: 0.070, sx: 0.000064, sy: 0.000045, a: 0.40 },
-  { hue: ' 88, 62,140', x: 0.42, y: 0.78, r: 0.90, ax: 0.070, ay: 0.055, sx: 0.000041, sy: 0.000083, a: 0.34 },
-  { hue: '232,163, 61', x: 0.70, y: 0.92, r: 0.60, ax: 0.060, ay: 0.050, sx: 0.000075, sy: 0.000038, a: 0.16 },
+const PAGE_GEOM = [
+  { x: 0.18, y: 0.18, r: 0.95, ax: 0.075, ay: 0.060, sx: 0.000052, sy: 0.000071, a: 0.46 },
+  { x: 0.82, y: 0.42, r: 0.85, ax: 0.085, ay: 0.070, sx: 0.000064, sy: 0.000045, a: 0.40 },
+  { x: 0.42, y: 0.78, r: 0.90, ax: 0.070, ay: 0.055, sx: 0.000041, sy: 0.000083, a: 0.34 },
+  { x: 0.70, y: 0.92, r: 0.60, ax: 0.060, ay: 0.050, sx: 0.000075, sy: 0.000038, a: 0.16 },
 ];
+
+const dress = (geom, hues) =>
+  geom.map((g, i) => ({ ...g, hue: hues[i % hues.length] }));
+
+export const heroFields = (hues) => dress(HERO_GEOM, hues);
+export const pageFields = (hues) => dress(PAGE_GEOM, hues);
 
 export function aurora(canvas, fields) {
   if (!canvas) return;

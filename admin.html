@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Portfolio admin</title>
-  <link rel="stylesheet" href="admin/admin.css?v=3">
+  <link rel="stylesheet" href="admin/admin.css?v=4">
 </head>
 <body data-auth="no">
 
@@ -16,6 +16,7 @@
       <a id="view" class="btn ghost small" target="_blank" rel="noopener">View site</a>
       <button id="reload" type="button" class="btn ghost small">Reload</button>
       <button id="signout" type="button" class="btn ghost small auth-only">Sign out</button>
+      <button id="review-open" type="button" class="btn ghost small" disabled>Review</button>
       <button id="save" type="button" class="btn small" disabled>Publish</button>
     </div>
   </header>
@@ -45,6 +46,21 @@
 
   <main id="form" class="form"></main>
 
-  <script type="module" src="admin/admin.js?v=3"></script>
+  <dialog id="review" class="review">
+    <header class="review-head">
+      <h2>Review before publishing</h2>
+      <button id="review-close" type="button" class="btn ghost small">Close</button>
+    </header>
+    <div id="review-body" class="review-body"></div>
+    <footer class="review-foot">
+      <p class="field-help">
+        Publishing writes these changes to the repository. The site updates
+        about a minute later.
+      </p>
+      <button id="review-publish" type="button" class="btn" disabled>Publish</button>
+    </footer>
+  </dialog>
+
+  <script type="module" src="admin/admin.js?v=4"></script>
 </body>
 </html>
