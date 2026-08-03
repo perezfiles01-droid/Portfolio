@@ -10,6 +10,16 @@
 
 import { aurora, PAGE_FIELDS } from './aurora.js';
 
+// Bump this whenever a section's html, css or js changes.
+//
+// Why it exists: a panel is three files that have to agree with each other. If
+// the browser fetches a new .html but reuses a cached .js, the script looks for
+// markup that is no longer there and the panel dies. Asking for all three at
+// the same version makes that mismatch impossible. Modules cannot be fetched
+// with cache: 'no-cache' the way the data files are, so the version travels in
+// the URL instead.
+const VERSION = '2026-08-03a';
+
 const SECTIONS = ['hero', 'journey', 'background', 'projects', 'skills', 'achievements', 'contact'];
 
 async function loadSection(name) {
@@ -20,22 +30,23 @@ async function loadSection(name) {
   }
 
   const base = `sections/${name}/${name}`;
+  const v = `?v=${VERSION}`;
 
   // 1. The markup. fetch asks the server for the file the same way the
   //    browser asked for index.html; .text() hands back its contents.
-  const response = await fetch(`${base}.html`, { cache: 'no-cache' });
+  const response = await fetch(`${base}.html${v}`, { cache: 'no-cache' });
   if (!response.ok) throw new Error(`${base}.html returned ${response.status}`);
   slot.innerHTML = await response.text();
 
   // 2. The styling that only this panel uses.
   document.head.insertAdjacentHTML(
     'beforeend',
-    `<link rel="stylesheet" href="${base}.css">`
+    `<link rel="stylesheet" href="${base}.css${v}">`
   );
 
   // 3. The behaviour. The module fetches its own .json and fills in the
   //    markup, so everything the panel needs stays inside its own folder.
-  const url = new URL(`../${base}.js`, import.meta.url);
+  const url = new URL(`../${base}.js${v}`, import.meta.url);
   const module = await import(url);
   if (typeof module.default === 'function') {
     await module.default(slot);
