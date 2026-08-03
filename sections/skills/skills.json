@@ -10,7 +10,8 @@
         "Electronic Document and Records Management Systems",
         "Records lifecycle and retention",
         "Reporting and data analysis"
-      ]
+      ],
+      "icon": "chart"
     },
     {
       "name": "Engineering",
@@ -20,7 +21,8 @@
         "Mechatronics servicing",
         "Shielded metal arc welding",
         "Machine lubrication"
-      ]
+      ],
+      "icon": "gear"
     },
     {
       "name": "Software",
@@ -28,7 +30,8 @@
         "AutoCAD",
         "SolidWorks",
         "Microsoft Office"
-      ]
+      ],
+      "icon": "monitor"
     },
     {
       "name": "Working style",
@@ -39,7 +42,8 @@
         "Team player",
         "Independent work",
         "Active listening"
-      ]
+      ],
+      "icon": "users"
     }
   ]
 }

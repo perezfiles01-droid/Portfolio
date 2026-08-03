@@ -1,30 +1,64 @@
 /* Styling used only by the Background panel. */
 
-.bg-stage{
-  display:grid;
-  grid-template-columns:200px 1fr;
-  gap:2.5rem;
-  align-items:start;
-  margin-top:1.75rem;
+.bg-summary{
+  margin:0 0 1.75rem;
+  color:var(--ink-dim);
 }
 
-.bg-meta{
-  margin:0;
+/* ---------- the facts ---------- */
+
+/* A row across the panel rather than a column beside it. Four cards on a
+   wide screen, two on a narrow one, and each one stretches to fill its
+   share, so there is no empty strip left over. */
+.bg-facts{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
+  gap:0.7rem;
+  margin:0 0 2rem;
   padding:0;
   list-style:none;
+}
+
+.bg-fact{
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  padding:0.85rem 1rem;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:rgba(13,23,33,.55);
+  transition:border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.bg-fact:hover{
+  border-color:var(--signal);
+  background:rgba(13,23,33,.85);
+  transform:translateY(-2px);
+}
+
+.bg-fact-icon{
   display:grid;
-  gap:0.35rem;
-  font:0.75rem/1.5 var(--mono);
+  place-items:center;
+  width:2rem;
+  height:2rem;
+  flex-shrink:0;
+  border-radius:6px;
+  background:rgba(232,163,61,.1);
+  color:var(--signal);
+}
+.icon{ width:1.05rem; height:1.05rem; display:block; }
+
+.bg-fact-body{ display:grid; gap:0.1rem; min-width:0; }
+
+.bg-fact-label{
+  font:0.6875rem/1.3 var(--mono);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
   color:var(--muted);
 }
-.bg-meta span{ color:var(--signal); }
-
-/* ---------- summary ---------- */
-
-.bg-summary{
-  margin:0 0 1.9rem;
-  max-width:56ch;
-  color:var(--ink-dim);
+.bg-fact-value{
+  font-size:0.9375rem;
+  font-weight:600;
+  color:var(--ink);
 }
 
 /* ---------- timeline ---------- */
@@ -35,11 +69,11 @@
   position:relative;
   width:100%;
   display:grid;
-  grid-template-columns:7.5rem 1fr auto;
+  grid-template-columns:2.5rem 8.5rem 1fr auto;
   gap:1rem;
-  align-items:baseline;
+  align-items:center;
   text-align:left;
-  padding:0.95rem 0.9rem;
+  padding:1rem 0.9rem;
   border:0;
   border-top:1px solid var(--line);
   background:none;
@@ -67,6 +101,25 @@
 .bg-row[aria-expanded="true"]{ background:var(--panel); }
 .bg-row:hover::before,
 .bg-row[aria-expanded="true"]::before{ transform:scaleY(1); }
+
+/* work and study read differently at a glance */
+.bg-icon{
+  display:grid;
+  place-items:center;
+  width:2.15rem;
+  height:2.15rem;
+  border-radius:7px;
+  border:1px solid var(--line);
+  color:var(--muted);
+  transition:color .2s ease, border-color .2s ease, background .2s ease;
+}
+.bg-row[data-kind="education"] .bg-icon{ border-radius:50%; }
+.bg-row:hover .bg-icon,
+.bg-row[aria-expanded="true"] .bg-icon{
+  color:var(--signal);
+  border-color:var(--signal);
+  background:rgba(232,163,61,.08);
+}
 
 .bg-year{
   font:0.75rem/1.6 var(--mono);
@@ -114,15 +167,14 @@
 
 .bg-drawer p{
   margin:0;
-  padding:0.15rem 0.9rem 1rem;
-  max-width:58ch;
+  padding:0.15rem 0.9rem 1rem 3.5rem;
   color:#93a4ae;
   font-size:0.9375rem;
 }
 
 .bg-fields{
   margin:0;
-  padding:0 0.9rem 1.1rem;
+  padding:0 0.9rem 1.1rem 3.5rem;
   list-style:none;
   display:flex;
   flex-wrap:wrap;
@@ -137,7 +189,8 @@
 }
 
 @media (max-width: 720px){
-  .bg-stage{ grid-template-columns:1fr; gap:1.75rem; }
-  .bg-row{ grid-template-columns:1fr auto; }
-  .bg-year{ grid-column:1/-1; }
+  .bg-row{ grid-template-columns:2.5rem 1fr auto; }
+  .bg-year{ grid-column:2/-1; }
+  .bg-drawer p,
+  .bg-fields{ padding-left:0.9rem; }
 }

@@ -1,5 +1,7 @@
 // Behaviour for the Skills panel only.
 
+import { icon } from '../../assets/icons.js';
+
 const escape = (value) =>
   String(value).replace(/[&<>"]/g, (c) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]
@@ -15,7 +17,11 @@ export default async function init(root) {
     .map(
       (group) => `
       <section class="skill-group">
-        <h3 class="skill-name">${escape(group.name)}</h3>
+        <h3 class="skill-name">
+          <span class="skill-icon">${icon(group.icon || 'gear')}</span>
+          ${escape(group.name)}
+          <span class="skill-count">${group.items.length}</span>
+        </h3>
         <ul class="skill-items">
           ${group.items.map((item) => `<li>${escape(item)}</li>`).join('')}
         </ul>

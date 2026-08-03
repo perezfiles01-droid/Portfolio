@@ -1,22 +1,62 @@
 /* Styling used only by the Skills panel. */
 
+/* Full width rows, not columns.
+   Side by side cards leave a hole whenever one group has fewer skills than
+   its neighbour, and packed columns only move the hole somewhere else with
+   four blocks this size. A row per group sidesteps it: the heading takes a
+   fixed strip on the left and the skills fill everything to the right of it,
+   so every line of the panel is used. */
 .skill-groups{
   display:grid;
-  gap:1.75rem;
-  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:0.7rem;
 }
 
 .skill-group{
-  padding-top:1rem;
-  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:13rem 1fr;
+  gap:1rem 1.5rem;
+  align-items:center;
+  padding:1.1rem 1.25rem;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:rgba(13,23,33,.55);
+  transition:border-color .2s ease, background .2s ease;
+}
+.skill-group:hover{
+  border-color:#2c3d4a;
+  background:rgba(13,23,33,.8);
 }
 
 .skill-name{
-  margin:0 0 0.9rem;
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+  margin:0;
+  align-self:start;
+  padding-top:0.35rem;
   font:600 0.6875rem/1 var(--mono);
   letter-spacing:0.14em;
   text-transform:uppercase;
   color:var(--signal);
+}
+
+.skill-icon{
+  display:grid;
+  place-items:center;
+  width:1.85rem;
+  height:1.85rem;
+  flex-shrink:0;
+  border-radius:6px;
+  background:rgba(232,163,61,.1);
+  color:var(--signal);
+}
+.icon{ width:1.05rem; height:1.05rem; display:block; }
+
+.skill-count{
+  margin-left:auto;
+  font:0.6875rem/1 var(--mono);
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
 }
 
 .skill-items{
@@ -25,14 +65,15 @@
   list-style:none;
   display:flex;
   flex-wrap:wrap;
+  align-content:flex-start;
   gap:0.4rem;
 }
 
 .skill-items li{
-  padding:0.35rem 0.7rem;
+  padding:0.4rem 0.75rem;
   border:1px solid var(--line);
-  border-radius:3px;
-  background:var(--panel);
+  border-radius:999px;
+  background:var(--ground);
   color:var(--ink-dim);
   font-size:0.875rem;
   transition:border-color .18s ease, color .18s ease, transform .18s ease;
@@ -41,4 +82,9 @@
   border-color:var(--signal);
   color:var(--ink);
   transform:translateY(-2px);
+}
+
+@media (max-width: 700px){
+  .skill-group{ grid-template-columns:1fr; }
+  .skill-name{ padding-top:0; }
 }

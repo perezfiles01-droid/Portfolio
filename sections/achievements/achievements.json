@@ -54,29 +54,5 @@
     "sort": 202301,
     "note": "",
     "kind": "Conference"
-  },
-  {
-    "title": "Dean's List",
-    "issuer": "University of San Carlos",
-    "year": "2020 - 2021",
-    "sort": 202100,
-    "note": "",
-    "kind": "Academic"
-  },
-  {
-    "title": "Consistent With High Honors",
-    "issuer": "Basic education",
-    "year": "2013 - 2018",
-    "sort": 201800,
-    "note": "",
-    "kind": "Academic"
-  },
-  {
-    "title": "Valedictorian",
-    "issuer": "Elementary graduation",
-    "year": "2013",
-    "sort": 201300,
-    "note": "",
-    "kind": "Academic"
   }
 ]

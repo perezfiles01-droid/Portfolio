@@ -1,22 +1,26 @@
 {
   "role": "Junior Business Analyst, and a licensed Mechanical Engineer",
-  "summary": "I work as a Junior Business Analyst at AvePoint Cebu, on Electronic Document and Records Management Systems. I came to it from mechanical engineering: I graduated from the University of San Carlos in 2024 and passed the licensure examination in February 2025, with hands-on training in maintenance engineering, mechanical drafting, and mechatronics servicing. The engineering habit of taking a system apart to understand how it behaves is the part I use most in analysis work.",
+  "summary": "I work as a Junior Business Analyst at AvePoint Cebu. I came to it from mechanical engineering: I graduated from the University of San Carlos in 2024 and passed the licensure examination in February 2025, with hands-on training in maintenance engineering, mechanical drafting, and mechatronics servicing. The engineering habit of taking a system apart to understand how it behaves is the part I use most in analysis work.",
   "meta": [
     {
       "field": "role",
-      "value": "Junior BA"
+      "value": "Junior BA",
+      "icon": "badge"
     },
     {
       "field": "at",
-      "value": "AvePoint Cebu"
+      "value": "AvePoint Cebu",
+      "icon": "building"
     },
     {
       "field": "based",
-      "value": "Cebu City, PH"
+      "value": "Cebu City, PH",
+      "icon": "pin"
     },
     {
       "field": "licence",
-      "value": "ME, Feb 2025"
+      "value": "ME, Feb 2025",
+      "icon": "seal"
     }
   ],
   "timeline": [
@@ -30,7 +34,9 @@
         "Requirements",
         "Reporting",
         "Records management"
-      ]
+      ],
+      "kind": "work",
+      "icon": "briefcase"
     },
     {
       "role": "Technical Intern",
@@ -40,7 +46,9 @@
       "tags": [
         "EDRMS",
         "Internship"
-      ]
+      ],
+      "kind": "work",
+      "icon": "briefcase"
     },
     {
       "role": "Maintenance Engineering Intern",
@@ -51,7 +59,9 @@
         "Maintenance",
         "Flour milling",
         "Field work"
-      ]
+      ],
+      "kind": "work",
+      "icon": "briefcase"
     },
     {
       "role": "BS Mechanical Engineering",
@@ -63,14 +73,18 @@
         "Thesis",
         "Research",
         "Conference"
-      ]
+      ],
+      "kind": "education",
+      "icon": "cap"
     },
     {
       "role": "Senior High School",
       "org": "University of San Carlos, Cebu City",
       "period": "2018 - 2020",
       "detail": "Completed senior high school at the University of San Carlos before continuing to the engineering programme.",
-      "tags": []
+      "tags": [],
+      "kind": "education",
+      "icon": "cap"
     }
   ]
 }

@@ -1,8 +1,7 @@
 // Behaviour for the Background panel only.
 // It fetches its own background.json and fills in background.html.
-//
-// The portrait lives in the Hero panel now, so this panel is education,
-// experience, and the metadata beside it.
+
+import { icon } from '../../assets/icons.js';
 
 const escape = (value) =>
   String(value).replace(/[&<>"]/g, (c) =>
@@ -16,8 +15,19 @@ export default async function init(root) {
   root.querySelector('[data-role]').textContent = data.role;
   root.querySelector('[data-summary]').textContent = data.summary;
 
+  // The facts run across the panel as a row of cards rather than down a
+  // narrow column, so they use the width instead of leaving it empty.
   root.querySelector('[data-meta]').innerHTML = (data.meta || [])
-    .map((row) => `<li>${escape(row.field)} <span>${escape(row.value)}</span></li>`)
+    .map(
+      (row) => `
+      <li class="bg-fact">
+        <span class="bg-fact-icon">${icon(row.icon || 'badge')}</span>
+        <span class="bg-fact-body">
+          <span class="bg-fact-label">${escape(row.field)}</span>
+          <span class="bg-fact-value">${escape(row.value)}</span>
+        </span>
+      </li>`
+    )
     .join('');
 
   // Each entry is a button followed by its own drawer, so opening one is a
@@ -30,7 +40,9 @@ export default async function init(root) {
         .join('');
 
       return `
-        <button class="bg-row" type="button" aria-expanded="false" aria-controls="${id}">
+        <button class="bg-row" type="button" aria-expanded="false" aria-controls="${id}"
+                data-kind="${escape(entry.kind || 'work')}">
+          <span class="bg-icon">${icon(entry.icon || 'briefcase')}</span>
           <span class="bg-year">${escape(entry.period)}</span>
           <span class="bg-title">${escape(entry.role)}<span class="bg-org">${escape(entry.org)}</span></span>
           <span class="bg-plus" aria-hidden="true">+</span>
