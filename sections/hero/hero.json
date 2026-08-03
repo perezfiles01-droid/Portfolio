@@ -1,0 +1,15 @@
+{
+  "eyebrow": "Welcome to Jimwyl's portfolio",
+  "display": "Mechanical Engineer",
+  "name": "Jimwyl Steve D. Perez",
+  "sub": "Registered Mechanical Engineer based in Cebu City, Philippines. Trained in maintenance engineering, mechanical drafting, and mechatronics servicing.",
+  "photo": "images/profile.jpg",
+  "photoAlt": "Portrait of Jimwyl Steve D. Perez",
+  "stats": [
+    { "value": "2025", "label": "Licensed ME" },
+    { "value": "4", "label": "NC II certifications" },
+    { "value": "2", "label": "Research conferences" }
+  ],
+  "cta": { "label": "Explore my background", "target": "background" },
+  "scrollHint": "Scroll down"
+}

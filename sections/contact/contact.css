@@ -1,0 +1,75 @@
+/* Styling used only by the Contact panel. */
+
+.contact-rows{
+  display:grid;
+  max-width:34rem;
+}
+
+.contact-row{
+  position:relative;
+  display:grid;
+  grid-template-columns:5.5rem 1fr auto;
+  gap:1rem;
+  align-items:center;
+  padding:1rem 0.9rem;
+  border-top:1px solid var(--line);
+  transition:background .18s ease;
+}
+.contact-row:last-child{ border-bottom:1px solid var(--line); }
+
+.contact-row::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:-1px;
+  bottom:-1px;
+  width:2px;
+  background:var(--signal);
+  transform:scaleY(0);
+  transform-origin:top;
+  transition:transform .22s ease;
+}
+.contact-row:hover{ background:var(--panel); }
+.contact-row:hover::before{ transform:scaleY(1); }
+
+.contact-label{
+  font:0.75rem/1.5 var(--mono);
+  letter-spacing:0.06em;
+  color:var(--muted);
+}
+
+.contact-value{
+  font-size:0.9375rem;
+  color:var(--ink);
+  text-decoration:none;
+  word-break:break-all;
+}
+a.contact-value:hover{ color:var(--signal); text-decoration:underline; }
+
+.contact-copy{
+  padding:0.3rem 0.65rem;
+  border:1px solid var(--line);
+  border-radius:3px;
+  background:none;
+  color:var(--muted);
+  font:0.6875rem/1.35 var(--mono);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:color .18s ease, border-color .18s ease, background .18s ease;
+}
+.contact-copy:hover{ color:var(--ink); border-color:var(--signal); }
+.contact-copy[data-done="true"]{
+  background:var(--signal);
+  border-color:var(--signal);
+  color:var(--ground);
+  font-weight:700;
+}
+
+.contact-note{
+  margin:1.5rem 0 0;
+  max-width:56ch;
+  color:var(--muted);
+  font-size:0.9375rem;
+}

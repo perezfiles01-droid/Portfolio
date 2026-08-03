@@ -1,0 +1,44 @@
+/* Styling used only by the Skills panel. */
+
+.skill-groups{
+  display:grid;
+  gap:1.75rem;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.skill-group{
+  padding-top:1rem;
+  border-top:1px solid var(--line);
+}
+
+.skill-name{
+  margin:0 0 0.9rem;
+  font:600 0.6875rem/1 var(--mono);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--signal);
+}
+
+.skill-items{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.4rem;
+}
+
+.skill-items li{
+  padding:0.35rem 0.7rem;
+  border:1px solid var(--line);
+  border-radius:3px;
+  background:var(--panel);
+  color:var(--ink-dim);
+  font-size:0.875rem;
+  transition:border-color .18s ease, color .18s ease, transform .18s ease;
+}
+.skill-items li:hover{
+  border-color:var(--signal);
+  color:var(--ink);
+  transform:translateY(-2px);
+}

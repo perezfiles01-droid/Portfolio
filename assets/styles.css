@@ -47,6 +47,8 @@ body{
 }
 
 main{
+  position:relative;
+  z-index:2;
   max-width:var(--max-width);
   margin:0 auto;
   padding:0 1.5rem 5rem;
@@ -108,7 +110,10 @@ main{
 /* ---------- shared panel furniture ---------- */
 
 main > section{
-  padding-top:4rem;
+  padding-top:4.5rem;
+}
+
+[data-section]{
   scroll-margin-top:calc(var(--bar-height) + 1rem);
 }
 

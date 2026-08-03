@@ -1,0 +1,17 @@
+{
+  "intro": "What I bring to a maintenance or design team, grouped by the kind of work it supports.",
+  "groups": [
+    {
+      "name": "Software and drafting",
+      "items": ["AutoCAD", "SolidWorks", "Mechanical drafting", "Microsoft Office"]
+    },
+    {
+      "name": "Technical",
+      "items": ["Mechatronics servicing", "Shielded metal arc welding", "Machine lubrication", "Maintenance engineering"]
+    },
+    {
+      "name": "Working style",
+      "items": ["Task management", "Time management", "Adaptability", "Team player", "Independent work", "Active listening"]
+    }
+  ]
+}

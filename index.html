@@ -3,31 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jimwyl Steve Perez - Records and Information Management</title>
-  <meta name="description" content="Portfolio of Jimwyl Steve Perez: electronic document and records management, utilization reporting, retention and metadata standards.">
+  <title>Jimwyl Steve D. Perez - Mechanical Engineer</title>
+  <meta name="description" content="Portfolio of Jimwyl Steve D. Perez, Registered Mechanical Engineer based in Cebu City, Philippines.">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
   <header class="console">
-    <a class="sig" href="#top">JSP<i>/</i>PORTFOLIO</a>
+    <a class="sig" href="#hero">JSP<i>/</i>PORTFOLIO</a>
     <nav class="tabs" aria-label="Sections">
       <a class="tab" href="#background">Background</a>
-      <a class="tab" href="#projects">Projects</a>
+      <a class="tab" href="#skills">Skills</a>
       <a class="tab" href="#achievements">Achievements</a>
+      <a class="tab" href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main id="top">
+  <!-- Every empty slot below is filled at load time from its own folder
+       under sections/. To add a panel: create the folder, add a slot here,
+       and add its name to SECTIONS in assets/app.js. -->
 
-    <!-- Each empty slot below is filled at load time from its own folder
-         under sections/. To add a panel: create the folder, add a slot here,
-         and add its name to SECTIONS in assets/app.js. -->
+  <section id="hero" data-section="hero" data-no-reveal></section>
 
+  <main>
     <section id="background"   data-section="background"></section>
-    <section id="projects"     data-section="projects"></section>
+    <section id="skills"       data-section="skills"></section>
     <section id="achievements" data-section="achievements"></section>
-
+    <section id="contact"      data-section="contact"></section>
   </main>
 
   <footer class="site-footer">

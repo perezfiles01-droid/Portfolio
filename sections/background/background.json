@@ -1,28 +1,33 @@
 {
-  "name": "Jimwyl Steve Perez",
-  "role": "Records and Information Management",
-  "photo": "images/profile.jpg",
-  "photoAlt": "Portrait of Jimwyl Steve Perez",
-  "summary": "I work on electronic document and records systems: what is stored, who is using it, and what should have been disposed of years ago. Most of my work turns messy repositories into numbers people can act on.",
+  "name": "Jimwyl Steve D. Perez",
+  "role": "Registered Mechanical Engineer",
+  "summary": "I graduated in Mechanical Engineering from the University of San Carlos and passed the licensure examination in February 2025. My hands-on experience is in flour mill maintenance engineering, and my technical training covers mechanical drafting, mechatronics servicing, welding, and lubrication.",
   "meta": [
-    { "field": "status", "value": "active" },
-    { "field": "based", "value": "Manila, PH" },
-    { "field": "focus", "value": "EDRMS / reporting" }
+    { "field": "status", "value": "open to work" },
+    { "field": "based", "value": "Cebu City, PH" },
+    { "field": "licence", "value": "ME, Feb 2025" }
   ],
   "timeline": [
     {
-      "role": "Records Management Analyst",
-      "org": "Asian Development Bank",
-      "period": "2024 - now",
-      "detail": "Reporting and utilization analysis for the enterprise document and records management system, covering six dashboards from storage growth to retention compliance.",
-      "tags": ["Power BI", "Retention", "Utilization", "Governance"]
+      "role": "Maintenance Engineering Intern",
+      "org": "General Milling Corporation, Lapu-Lapu City",
+      "period": "Feb - May 2024",
+      "detail": "Interned with the Flour Mill Maintenance Engineering Department, working alongside the maintenance team on the mill's mechanical equipment.",
+      "tags": ["Maintenance", "Flour milling", "Field work"]
     },
     {
-      "role": "Information Management Officer",
-      "org": "Previous Employer",
-      "period": "2021 - 2024",
-      "detail": "Retention scheduling, metadata standards, and onboarding departments onto a shared classification scheme.",
-      "tags": ["Metadata", "Classification", "Training"]
+      "role": "BS Mechanical Engineering",
+      "org": "University of San Carlos, Cebu City",
+      "period": "2020 - 2024",
+      "detail": "Dean's List, 2020 to 2021. Presented at the 12th International Mechanical Engineering Research Conference in January 2024, having attended the 11th as a participant the year before.",
+      "tags": ["Dean's List", "Research", "Conference"]
+    },
+    {
+      "role": "Senior High School",
+      "org": "University of San Carlos, Cebu City",
+      "period": "2018 - 2020",
+      "detail": "Completed senior high school at the University of San Carlos before continuing to the engineering programme.",
+      "tags": []
     }
   ]
 }

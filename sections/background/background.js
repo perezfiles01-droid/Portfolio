@@ -1,5 +1,8 @@
 // Behaviour for the Background panel only.
 // It fetches its own background.json and fills in background.html.
+//
+// The portrait lives in the Hero panel now, so this panel is education,
+// experience, and the metadata beside it.
 
 const escape = (value) =>
   String(value).replace(/[&<>"]/g, (c) =>
@@ -10,36 +13,15 @@ export default async function init(root) {
   const url = new URL('./background.json', import.meta.url);
   const data = await fetch(url).then((r) => r.json());
 
-  root.querySelector('[data-name]').textContent = data.name;
   root.querySelector('[data-role]').textContent = data.role;
   root.querySelector('[data-summary]').textContent = data.summary;
 
-  // ---- portrait -------------------------------------------------
-  // Optional. If "photo" is empty in background.json, or the file is not
-  // there yet, the frame stays hidden and the text takes the full width,
-  // so the panel never shows a broken image.
-  const shot = root.querySelector('[data-shot]');
-  if (data.photo) {
-    const img = new Image();
-    img.className = 'bg-photo';
-    img.alt = data.photoAlt || '';
-    img.loading = 'lazy';
-    img.addEventListener('load', () => {
-      shot.prepend(img);
-      shot.hidden = false;
-    });
-    img.src = data.photo;
-    root.querySelector('[data-plate]').textContent = data.photo;
-  }
-
-  // ---- metadata under the portrait ------------------------------
   root.querySelector('[data-meta]').innerHTML = (data.meta || [])
     .map((row) => `<li>${escape(row.field)} <span>${escape(row.value)}</span></li>`)
     .join('');
 
-  // ---- timeline -------------------------------------------------
-  // Each entry is a button followed by its own drawer, so opening one is
-  // a single class change and the keyboard gets it for free.
+  // Each entry is a button followed by its own drawer, so opening one is a
+  // single class change and the keyboard gets it for free.
   root.querySelector('[data-timeline]').innerHTML = data.timeline
     .map((entry, i) => {
       const id = `bg-drawer-${i}`;

@@ -1,14 +1,82 @@
 [
   {
-    "title": "Certified Records Analyst",
-    "issuer": "Placeholder Institute",
-    "year": 2025,
-    "note": "Replace these entries with your own."
+    "title": "Licensure Board Examination Passer, Mechanical Engineering",
+    "issuer": "Professional Regulation Commission",
+    "year": "Feb 2025",
+    "sort": 202502,
+    "note": "Registered Mechanical Engineer.",
+    "kind": "Licence"
   },
   {
-    "title": "Team Recognition Award",
-    "issuer": "Placeholder Employer",
-    "year": 2024,
-    "note": "For the records migration programme."
+    "title": "Basic Lubrication Training",
+    "issuer": "General Milling Corporation",
+    "year": "Feb 2024",
+    "sort": 202402,
+    "note": "",
+    "kind": "Training"
+  },
+  {
+    "title": "Mechatronics Servicing NC II",
+    "issuer": "TESDA",
+    "year": "Jan 2024",
+    "sort": 202401,
+    "note": "",
+    "kind": "Certification"
+  },
+  {
+    "title": "12th International Mechanical Engineering Research Conference",
+    "issuer": "Presenter",
+    "year": "Jan 2024",
+    "sort": 202401,
+    "note": "Presented research at the conference.",
+    "kind": "Conference"
+  },
+  {
+    "title": "Shielded Metal Arc Welding NC II",
+    "issuer": "TESDA",
+    "year": "Dec 2023",
+    "sort": 202312,
+    "note": "",
+    "kind": "Certification"
+  },
+  {
+    "title": "Technical Drafting NC II",
+    "issuer": "TESDA",
+    "year": "Oct 2023",
+    "sort": 202310,
+    "note": "",
+    "kind": "Certification"
+  },
+  {
+    "title": "11th International Mechanical Engineering Research Conference",
+    "issuer": "Participant",
+    "year": "Jan 2023",
+    "sort": 202301,
+    "note": "",
+    "kind": "Conference"
+  },
+  {
+    "title": "Dean's List",
+    "issuer": "University of San Carlos",
+    "year": "2020 - 2021",
+    "sort": 202100,
+    "note": "",
+    "kind": "Academic"
+  },
+  {
+    "title": "Consistent With High Honors",
+    "issuer": "Basic education",
+    "year": "2013 - 2018",
+    "sort": 201800,
+    "note": "",
+    "kind": "Academic"
+  },
+  {
+    "title": "Valedictorian",
+    "issuer": "Elementary graduation",
+    "year": "2013",
+    "sort": 201300,
+    "note": "",
+    "kind": "Academic"
   }
 ]

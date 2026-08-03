@@ -8,7 +8,10 @@
 // To add a new panel: create sections/<name>/ with <name>.html, <name>.css,
 // <name>.js and <name>.json, add a slot in index.html, and add the name here.
 
-const SECTIONS = ['background', 'projects', 'achievements'];
+// The projects panel is switched off until there is project work to show.
+// Its folder is still in sections/, so putting 'projects' back in this list
+// and adding a slot in index.html is all it takes to bring it back.
+const SECTIONS = ['hero', 'background', 'skills', 'achievements', 'contact'];
 
 async function loadSection(name) {
   const slot = document.querySelector(`[data-section="${name}"]`);
@@ -97,10 +100,10 @@ const reveal = new IntersectionObserver(
   { rootMargin: '0px 0px -12% 0px', threshold: 0.05 }
 );
 
-document.querySelectorAll('main > section').forEach((section) => {
+document.querySelectorAll('[data-section]').forEach((section) => {
   spy.observe(section);
+  // the hero is the first thing on screen, so it should not fade in
+  if (section.hasAttribute('data-no-reveal')) return;
   section.classList.add('reveal');
   reveal.observe(section);
 });
-
-markCurrent(SECTIONS[0]);
